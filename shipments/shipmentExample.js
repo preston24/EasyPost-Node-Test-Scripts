@@ -104,7 +104,7 @@ const shipment = new api.Shipment({
   parcel: parcel,
   // customs_info: customsInfo,
     // options: {
-    //   label_format: 'PDF',
+      label_format: 'PDF',
     //   print_custom_1: '123',
     //   print_custom_1_code: 'PO',
     //   print_custom_2: '456',
@@ -121,6 +121,6 @@ const shipment = new api.Shipment({
 // shipment.buy(shipment.lowestRate(), 249.99).catch(err => console.log(err))
 
 // ============buy shipment by ID============
-api.Shipment.retrieve('shp_dd8f906731c342408bed5dfbcfd1aeda').then(s => {
-  s.buy('rate_ea2946bfb1724bf2a5e5533ce35de073').then(console.log).catch(console.log);
-}).catch(console.log);
+// api.Shipment.retrieve('shp_dd8f906731c342408bed5dfbcfd1aeda').then(s => {
+//   s.buy('rate_ea2946bfb1724bf2a5e5533ce35de073').then(console.log).catch(console.log);
+// }).catch(console.log);
