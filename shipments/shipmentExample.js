@@ -80,9 +80,12 @@ const fromAddress = new api.Address({
 //     })],
 // });
 
-fromAddress.save().then(console.log);
+// fromAddress.save().then(console.log);
 
-toAddress.save().then(r => console.log(JSON.stringify(r))).catch(console.log);
+// toAddress.save().then(console.log);
+
+// This one shows errors
+// toAddress.save().then(r => console.log(JSON.stringify(r))).catch(console.log);
 
 const parcel = new api.Parcel({
   // predefined_package: 'Letter',
@@ -93,7 +96,7 @@ const parcel = new api.Parcel({
 });
 
 
-parcel.save().then(console.log);
+// parcel.save().then(console.log);
 
 const shipment = new api.Shipment({
   to_address: toAddress,
@@ -113,11 +116,11 @@ const shipment = new api.Shipment({
     carrier_accounts: ['ca_df03ec256385433aa343858de35adca8']
 });
 
-shipment.save().then(console.log);
+// shipment.save().then(console.log);
 
 // shipment.buy(shipment.lowestRate(), 249.99).catch(err => console.log(err))
 
 // ============buy shipment by ID============
-// api.Shipment.retrieve('shp_03259e18fbf6466396835795e1051347').then(s => {
-//   s.buy('rate_38793177e8014f28907a694ecc560beb').then(console.log).catch(console.log);
-// }).catch(console.log);
+api.Shipment.retrieve('shp_dd8f906731c342408bed5dfbcfd1aeda').then(s => {
+  s.buy('rate_ea2946bfb1724bf2a5e5533ce35de073').then(console.log).catch(console.log);
+}).catch(console.log);
