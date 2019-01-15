@@ -11,43 +11,30 @@ const api = new Easypost(apiKey);
 // set addresses
 
 const toAddress = new api.Address({
-  // company: 'State Farm',
-  name: 'Chester',
-  street1: '358 S 700 E',
-  street2: 'STE B',
-  city: 'Salt Lake City',
-  state: 'UT',
-  zip: '84102',
-  phone: '8011234567',
+  // company: "The UPS Store",
+  // name: 'Chester',
+  // street1: '358 S 700 E',
+  // street2: 'STE B',
+  // city: 'Salt Lake City',
+  // state: 'UT',
+  // zip: '84102',
+  // phone: '8011234567',
   verify: ['delivery'],
-  // name: 'Alexis Atallah',
-  // street1: 'Beirut, Achrafieh, Hotel Dieu de Fr',
-  // street2: '',
-  // city: 'Achrafieh',
-  // state: 'Beirut',
-  // zip: '1100',
-  // country: 'LB',
-  // phone: '0096171968278',
-  // email: ''
+  name: 'john doe',
+  street1: 'Studio Tour Dr',
+  city: 'Leavesden',
+  zip: 'WD25 7LR',
+  country: 'UK',
 });
 
-
 const fromAddress = new api.Address({
-  company: 'The UPS Store',
-  street1: '358 S 700 E',
-  street2: 'STE B',
-  city: 'Salt Lake City',
-  state: 'UT',
-  zip: '84121',
-  phone: '8011234567',
-  // company: 'GlobalShopex LLC.',
-  // street1: '9990 NW 14th Street',
-  // street2: 'Suite 110',
-  // city: 'MIAMI',
-  // state: 'FL',
-  // country: 'US',
-  // phone: '+1 (786) 845 8826',
-  // email: ''
+  company: 'EasyPost',
+  street1: '1 Montgomery Street',
+  street2: 'STE 400',
+  city: 'San Francisco',
+  state: 'CA',
+  zip: '94104',
+  // phone: '',
 });
 
 
@@ -80,47 +67,47 @@ const fromAddress = new api.Address({
 //     })],
 // });
 
-// fromAddress.save().then(console.log);
+fromAddress.save().then(console.log);
 
-// toAddress.save().then(console.log);
+toAddress.save().then(console.log);
 
 // This one shows errors
 // toAddress.save().then(r => console.log(JSON.stringify(r))).catch(console.log);
 
 const parcel = new api.Parcel({
-  // predefined_package: 'Letter',
+  // predefined_package: 'FedExEnvelope',
   length: 10,
   width: 10,
   height: 10,
-  weight: 21.6,
+  weight: 1,
 });
 
 
-// parcel.save().then(console.log);
+parcel.save().then(console.log);
 
 const shipment = new api.Shipment({
   to_address: toAddress,
   from_address: fromAddress,
   parcel: parcel,
   // customs_info: customsInfo,
-    // options: {
+    options: {
       label_format: 'PDF',
-    //   print_custom_1: '123',
-    //   print_custom_1_code: 'PO',
-    //   print_custom_2: '456',
-    //   print_custom_2_code: 'DP',
-    //   print_custom_3: 'This is my RMA',
-    //   print_custom_3_code: 'RMA',
-    //   invoice_number: '$40'
-    // },
-    carrier_accounts: ['ca_df03ec256385433aa343858de35adca8']
+      // print_custom_1: '123',
+      // print_custom_1_code: 'PO',
+      // print_custom_2: '456',
+      // print_custom_2_code: 'DP',
+      // print_custom_3: 'This is my RMA',
+      // print_custom_3_code: 'RMA',
+      // invoice_number: '$40'
+    },
+    carrier_accounts: ['ca_24bc0be091514b41b2c31f59808d4ede']
 });
 
-// shipment.save().then(console.log);
+shipment.save().then(console.log);
 
 // shipment.buy(shipment.lowestRate(), 249.99).catch(err => console.log(err))
 
 // ============buy shipment by ID============
-// api.Shipment.retrieve('shp_dd8f906731c342408bed5dfbcfd1aeda').then(s => {
-//   s.buy('rate_ea2946bfb1724bf2a5e5533ce35de073').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_59784aa0ee424003b87a9ceb8ca828a0').then(s => {
+//   s.buy('rate_2efcd39a7cb74dd98f732c1d211bf039').then(console.log).catch(console.log);
 // }).catch(console.log);

@@ -7,14 +7,14 @@ const apiKey = process.env.testKey;
 const api = new Easypost(apiKey);
 
 
-batch = new api.Batch({
-    /* Shipments and other batch child objects can either be
+/* Shipments and other batch child objects can either be
      * an array instances or an array of ids. */
-    shipments: ['shp_'],
-    options: {
-        label_format: "PDF",
-        label_size: "4x6"
-    }
-});
+// batch = new api.Batch({
+//     shipments: ['shp_9b4f1c5803da4684aff4a16ddeb16ba6', 'shp_68b9bd742dda47aeb5f28a9bd457e632'],
+// });
 
-batch.save().then(console.log);
+batch = new api.Batch({
+    shipments: [{id: 'shp_9b4f1c5803da4684aff4a16ddeb16ba6'}]
+  });
+
+batch.save().then(console.log).catch(console.log);

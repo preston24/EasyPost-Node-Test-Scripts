@@ -15,10 +15,15 @@ const api = new Easypost(apiKey);
 
 
 
+// shp_f1c14952cdf64d7d9ffc8925057cba48
+// shp_d73abc5ecd2347ebb4d581bfd390979a
 
-// api.Shipment.retrieve('shp_4027a93debd040d2ae0b6d745310f1ae').then(s => {
-//     s.buy(s.lowestRate(), 249.99).then(console.log);
-//   });
+// const shipment_manifest = ['shp_d73abc5ecd2347ebb4d581bfd390979a', 'shp_f1c14952cdf64d7d9ffc8925057cba48'];
 
 
+
+const scanForm = new api.ScanForm({
+    shipments: ['shp_d73abc5ecd2347ebb4d581bfd390979a', 'shp_f1c14952cdf64d7d9ffc8925057cba48']
+  });
   
+  scanForm.save().then(console.log).catch(console.log);
