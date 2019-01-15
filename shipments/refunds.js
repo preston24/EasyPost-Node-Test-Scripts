@@ -8,6 +8,6 @@ const api = new Easypost(apiKey);
 
 
 
-api.Shipment.retrieve('').then(s => {
+api.Shipment.retrieve('shp_...').then(s => {
     s.refund(console.log(s));
 });

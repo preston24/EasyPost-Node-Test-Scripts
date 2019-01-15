@@ -105,9 +105,11 @@ const shipment = new api.Shipment({
 
 shipment.save().then(console.log);
 
-// shipment.buy(shipment.lowestRate(), 249.99).catch(err => console.log(err))
 
-// ============buy shipment by ID============
+//============buy shipment by lowest rate============
+// shipment.buy(shipment.lowestRate()).catch(err => console.log(err))
+
+// ============Buy Shipment by ID============
 // api.Shipment.retrieve('shp_59784aa0ee424003b87a9ceb8ca828a0').then(s => {
 //   s.buy('rate_2efcd39a7cb74dd98f732c1d211bf039').then(console.log).catch(console.log);
 // }).catch(console.log);

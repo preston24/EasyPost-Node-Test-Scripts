@@ -7,4 +7,4 @@ const apiKey = process.env.testKey;
 const api = new Easypost(apiKey);
 
 
-api.Shipment.retrieve('').then(console.log);
+api.Shipment.retrieve('shp_...').then(console.log);

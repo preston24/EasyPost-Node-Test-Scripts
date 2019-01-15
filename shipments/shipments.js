@@ -107,20 +107,19 @@ const toAddress = new api.Address({
   })
 
   shipment.save().then(console.log);
+
+
+  // ============Buy Shipment by ID============
+// api.Shipment.retrieve('shp_').then(s => {
+//   s.buy('rate_').then(console.log).catch(console.log);
+// }).catch(console.log);
   
-  
-  //============buy shipment by lowest rate============
-  // shipment.save().then(buyShipment => {
-  //   shipment.buy(shipment.lowestRate())
-  //     .then(console.log);
-  // }).catch(console.log);
-  
+
   //============buy shipment by Service============
-  // shipment.save().then(buyShipment => {
-  //   shipment.buy("USPS", "FirstClassPackageInternationalService")
-  //     .then(console.log).catch(console.log);
-  // }).catch(console.log);
-  
+  // shipment.buy("USPS", "FirstClassPackageInternationalService").then(console.log).catch(console.log)
+
+
+  // ============buy shipment by lowest rate============
   // api.Shipment.retrieve('shp_').then(s => {
   //   s.buy(s.lowestRate(), 249.99).then(console.log);
   // });
