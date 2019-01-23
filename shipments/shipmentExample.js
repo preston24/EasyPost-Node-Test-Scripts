@@ -12,28 +12,29 @@ const api = new Easypost(apiKey);
 
 const toAddress = new api.Address({
   // company: "The UPS Store",
-  // name: 'Chester',
-  // street1: '358 S 700 E',
+  name: 'The Guy',
+  street1: '796 NW Connell Ave',
   // street2: 'STE B',
-  // city: 'Salt Lake City',
-  // state: 'UT',
-  // zip: '84102',
-  // phone: '8011234567',
+  city: 'Hillsboro',
+  state: 'OR',
+  zip: '97124',
+  phone: '8011234567',
   verify: ['delivery'],
-  name: 'john doe',
-  street1: 'Studio Tour Dr',
-  city: 'Leavesden',
-  zip: 'WD25 7LR',
-  country: 'UK',
+  // name: 'john doe',
+  // street1: 'Studio Tour Dr',
+  // city: 'Leavesden',
+  // zip: 'WD25 7LR',
+  // country: 'UK',
 });
 
 const fromAddress = new api.Address({
-  company: 'EasyPost',
-  street1: '1 Montgomery Street',
-  street2: 'STE 400',
+  // company: 'EasyPost',
+  name: 'The Dude',
+  street1: '1337 Mission St',
+  // street2: 'STE 400',
   city: 'San Francisco',
   state: 'CA',
-  zip: '94104',
+  zip: '94103',
   // phone: '',
 });
 
@@ -76,10 +77,10 @@ toAddress.save().then(console.log);
 
 const parcel = new api.Parcel({
   // predefined_package: 'FedExEnvelope',
-  length: 10,
-  width: 10,
-  height: 10,
-  weight: 1,
+  length: 11,
+  width: 11,
+  height: 11,
+  weight: 272,
 });
 
 
@@ -92,6 +93,7 @@ const shipment = new api.Shipment({
   // customs_info: customsInfo,
     options: {
       label_format: 'PDF',
+      label_size: '4x6',
       // print_custom_1: '123',
       // print_custom_1_code: 'PO',
       // print_custom_2: '456',
@@ -100,7 +102,7 @@ const shipment = new api.Shipment({
       // print_custom_3_code: 'RMA',
       // invoice_number: '$40'
     },
-    carrier_accounts: ['ca_24bc0be091514b41b2c31f59808d4ede']
+    carrier_accounts: ['ca_84b00a000edf4fb394029f42e97c0b7d']
 });
 
 shipment.save().then(console.log);
@@ -110,6 +112,6 @@ shipment.save().then(console.log);
 // shipment.buy(shipment.lowestRate()).catch(err => console.log(err))
 
 // ============Buy Shipment by ID============
-// api.Shipment.retrieve('shp_59784aa0ee424003b87a9ceb8ca828a0').then(s => {
-//   s.buy('rate_2efcd39a7cb74dd98f732c1d211bf039').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_e5890c19d86e495499a4ca3ee7ff2938').then(s => {
+//   s.buy('rate_65cdd01e9fcc435e8d4c1670f35e9049').then(console.log).catch(console.log);
 // }).catch(console.log);

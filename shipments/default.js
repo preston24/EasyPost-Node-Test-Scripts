@@ -7,8 +7,6 @@ const apiKey = process.env.testKey;
 const api = new Easypost(apiKey);
 
 
-const options = require('../options');
-
 // From address
 
 const fromAddress = new api.Address({

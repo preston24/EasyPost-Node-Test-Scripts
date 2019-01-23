@@ -7,4 +7,4 @@ const apiKey = process.env.testKey;
 const api = new Easypost(apiKey);
 
 
-api.Webhook.delete('hook_6bbc7408ae6e4ca480a56ce162fe0a17').then(console.log);
+api.Webhook.delete('hook_').then(console.log);
