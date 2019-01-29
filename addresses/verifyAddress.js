@@ -8,13 +8,13 @@ const api = new Easypost(apiKey);
 
 const verifiableAddress = new api.Address({
     verify: ['delivery'],
-    // company: 'NIE Y3405160 R',
-    name: 'Joe Shmo',
-    street1: '200 W Magee Road',
-    street2: 'Suite 130',
-    city: 'Tucson',
-    state: 'Atizone',
-    zip: '94704',
+    company: 'The UPS Store',
+    name: 'Mr. Person',
+    street1: '358 S 700 E',
+    street2: 'Suite B',
+    city: 'Salt Lake City',
+    state: 'UT',
+    zip: '84102',
     country: 'US',
     // phone: '0034666991783',
   });

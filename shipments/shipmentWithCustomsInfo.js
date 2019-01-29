@@ -10,13 +10,25 @@ const api = new Easypost(apiKey);
 
 // set addresses
 
+// const fromAddress = new api.Address({
+//   company: 'EasyPost',
+//   street1: '345 California St',
+//   street2: '10th Floor',
+//   city: 'San Francisco',
+//   state: 'CA',
+//   zip: '94104',
+//   phone: '8011234567'
+// });
+
 const fromAddress = new api.Address({
-  company: 'EasyPost',
-  street1: '345 California St',
-  street2: '10th Floor',
-  city: 'San Francisco',
-  state: 'CA',
-  zip: '94104',
+    company: "City Images",
+    name: "Gareth Little",
+    street1: "8 Avery Row",
+    city: "London",
+    state: "",
+    zip: "W1K 4AL",
+    country: "GB",
+    phone: "02075691982"
 });
 
 const toAddress = new api.Address({
@@ -72,16 +84,17 @@ const shipment = new api.Shipment({
     parcel: parcel,
     customs_info: customsInfo,
     options: {
-     label_format: "ZPL"
+     label_format: "PNG",
+     saturday_delivery: true,
     },
-    // carrier_accounts: ['ca_ab7cca42bab8490baf712016ee905deb']
+    carrier_accounts: ['ca_42aacf9b4fd0470b9a03d9b483a2323a']
 });
 
 shipment.save().then(console.log);
 
 // ============buy shipment by ID============
-// api.Shipment.retrieve('shp_').then(s => {
-//   s.buy('rate_').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_7bb50717965746e985bdc83adf203b5d').then(s => {
+//   s.buy('rate_c44175bac86248abab82385b37194e73').then(console.log).catch(console.log);
 // }).catch(console.log);
 
 

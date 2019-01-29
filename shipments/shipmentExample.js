@@ -102,7 +102,7 @@ const shipment = new api.Shipment({
       // print_custom_3_code: 'RMA',
       // invoice_number: '$40'
     },
-    carrier_accounts: ['ca_84b00a000edf4fb394029f42e97c0b7d']
+    carrier_accounts: ['ca_b281591570e24e0c961a09901a5c2b57']
 });
 
 shipment.save().then(console.log);
