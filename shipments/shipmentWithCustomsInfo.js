@@ -32,14 +32,14 @@ const fromAddress = new api.Address({
 });
 
 const toAddress = new api.Address({
-    company: "City Images",
-    name: "Gareth Little",
-    street1: "8 Avery Row",
+    company: "Pristin",
+    name: "Pristin",
+    street1: "221 Baker St",
     city: "London",
     state: "",
-    zip: "W1K 4AL",
+    zip: "W1K 1BE",
     country: "GB",
-    phone: "02075691982"
+    phone: "0123456987"
 });
 
 fromAddress.save().then(console.log);
@@ -87,7 +87,7 @@ const shipment = new api.Shipment({
      label_format: "PNG",
      saturday_delivery: true,
     },
-    carrier_accounts: ['ca_42aacf9b4fd0470b9a03d9b483a2323a']
+    carrier_accounts: ['ca_ab7cca42bab8490baf712016ee905deb']
 });
 
 shipment.save().then(console.log);

@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const Easypost = require('@easypost/api');
 const apiKey = process.env.testKey;
+// const apiKey = process.env.prodKey
 const api = new Easypost(apiKey);
 
 
@@ -10,12 +11,12 @@ const api = new Easypost(apiKey);
 //============= copy shipment JSON from admin and assign it to const ship ===============
 const ship = {}
 
-
 const shipment = new api.Shipment({
     to_address: ship.to_address,
     from_address: ship.from_address,
     parcel: ship.parcel,
-    options: ship.options
+    options: ship.options,
+    carrier_accounts: ['ca_ab7cca42bab8490baf712016ee905deb']
 })
 
 shipment.save().then(console.log).catch(console.log);
