@@ -8,15 +8,15 @@ const api = new Easypost(apiKey);
 
 const verifiableAddress = new api.Address({
     verify: ['delivery'],
-    company: 'The UPS Store',
-    name: 'Mr. Person',
-    street1: '358 S 700 E',
-    street2: 'Suite B',
-    city: 'Salt Lake City',
-    state: 'UT',
-    zip: '84102',
-    country: 'US',
-    // phone: '0034666991783',
+    // company: 'The UPS Store',
+    name: 'Heather KIRK',
+    street1: '2820 BOUL LAURIER',
+    street2: 'COMPLEXE JULES DALLAIRE TOUR 3, Office 850',
+    city: 'Québec',
+    state: 'QC',
+    zip: 'G1V 0C1',
+    country: 'CA',
+    phone: '5142130299',
   });
   
 //   // verifiableAddress.save().then(console.log);

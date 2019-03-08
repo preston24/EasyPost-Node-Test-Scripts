@@ -15,18 +15,19 @@ const shipment = new api.Shipment({
     to_address: ship.to_address,
     from_address: ship.from_address,
     parcel: ship.parcel,
+    customs_info: ship.customs_info,
     options: ship.options,
-    carrier_accounts: ['ca_ab7cca42bab8490baf712016ee905deb']
+    carrier_accounts: ['ca_df03ec256385433aa343858de35adca8']
 })
 
-shipment.save().then(console.log).catch(console.log);
+// shipment.save().then(console.log).catch(console.log);
 
 
 //============buy shipment by lowest rate============
-// shipment.save().then(buyShipment => {
-//   shipment.buy(shipment.lowestRate())
-//     .then(console.log).catch(console.log);
-// }).catch(console.log);
+shipment.save().then(buyShipment => {
+  shipment.buy(shipment.lowestRate())
+    .then(console.log).catch(console.log);
+}).catch(console.log);
 
 //============buy shipment by carrier name/service type============
 // shipment.save().then(buyShipment => {

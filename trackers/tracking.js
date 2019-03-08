@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey
 const api = new Easypost(apiKey);
 
 
@@ -12,7 +12,7 @@ const api = new Easypost(apiKey);
 
 const tracker1 = new api.Tracker({
   // tracking_code: trackArray[0],
-  tracking_code: '0004089784600002858294105362000',
+  tracking_code: '9405511699000805355971',
   carrier: 'USPS'
 });
 
