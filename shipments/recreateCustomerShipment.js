@@ -20,7 +20,7 @@ const shipment = new api.Shipment({
     carrier_accounts: ['ca_df03ec256385433aa343858de35adca8']
 })
 
-// shipment.save().then(console.log).catch(console.log);
+shipment.save().then(console.log).catch(console.log);
 
 
 //============buy shipment by lowest rate============
@@ -36,6 +36,6 @@ shipment.save().then(buyShipment => {
 // }).catch(console.log);
 
 // ============buy shipment by ID============
-// api.Shipment.retrieve('shp_...').then(s => {
-//   s.buy('rate_...').then(console.log);
-// });
+// api.Shipment.retrieve('shp_69f57dbc8af04634aa1096a527fcba9f').then(s => {
+//   s.buy('rate_31142cd073ea46e79bad9af3bc00ed0f').then(console.log).catch(console.log);
+// }).catch(console.log);

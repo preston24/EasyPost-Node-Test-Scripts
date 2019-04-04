@@ -9,9 +9,9 @@ const api = new Easypost(apiKey);
 
 
 // retrieve pickup
-api.Pickup.retrieve('pickup_').then(console.log);
+// api.Pickup.retrieve('pickup_').then(console.log);
 
 // retrieve and buy pickup
-// api.Pickup.retrieve('pickup_...').then(p => {
-//     p.buy('UPS', 'Same-day Pickup').catch(console.error);
-//   });
+api.Pickup.retrieve('pickup_3ffd7491b7104eee974fb2b8feebf674').then(p => {
+    p.buy('Purolator', 'PurolatorPickup').then(console.log).catch(console.error);
+  });

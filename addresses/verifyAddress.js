@@ -9,17 +9,16 @@ const api = new Easypost(apiKey);
 const verifiableAddress = new api.Address({
     verify: ['delivery'],
     // company: 'The UPS Store',
-    name: 'Heather KIRK',
-    street1: '2820 BOUL LAURIER',
-    street2: 'COMPLEXE JULES DALLAIRE TOUR 3, Office 850',
-    city: 'Québec',
-    state: 'QC',
-    zip: 'G1V 0C1',
-    country: 'CA',
-    phone: '5142130299',
+    name: 'Oleg Antonov',
+    street1: '10303 Rutland Village East',
+    city: 'Austin',
+    state: 'TX',
+    zip: '78758',
+    country: 'US',
+    phone: '5555555555',
   });
   
-//   // verifiableAddress.save().then(console.log);
+// verifiableAddress.save().then(console.log);
   
-//   // This will show me the error in the terminal
-  verifiableAddress.save().then(r => console.log(JSON.stringify(r)))
+// This will show me the error in the terminal
+verifiableAddress.save().then(r => console.log(JSON.stringify(r)))

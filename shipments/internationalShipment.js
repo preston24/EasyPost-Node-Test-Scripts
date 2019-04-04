@@ -2,44 +2,54 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-// const apiKey = process.env.testKey;
-const apiKey = process.env.prodKey
+const apiKey = process.env.testKey;
+// const apiKey = process.env.prodKey
 const api = new Easypost(apiKey);
 
 
 
-const toAddress = new api.Address({
-  company: "TEST",
-  name: 'TEST',
-  street1: '358 S 700 E',
-  street2: 'STE B',
-  city: 'Salt Lake City',
-  state: 'UT',
-  zip: '84102',
-  country: 'US',
-  phone: '4165555556',
-  email: 'TEST123@YOPMAIL.COM',
-  // verify: ['delivery'],
-});
-
-
-  const fromAddress = new api.Address({
-  company: 'test1234',
-  name: 'CGW12 CGW',
-  street1: '12125 Yonge Street',
-  street2: '3334 (REF: 222)',
-  city: 'Toronto',
+  const toAddress = new api.Address({
+  // company: '',
+  name: 'Store 40',
+  street1: '50 Rideau St',
+  // street2: '',
+  city: 'Ottawa',
   state: 'ON',
-  zip: 'L4E 3M4',
+  zip: 'K1N 9J7',
   country: 'CA',
-  phone: '9999999999',
-  email: 'testingbydev@gmail.com'
+  phone: '6135699941',
 });
 
+const fromAddress = new api.Address({
+  // company: 'Store 30',
+  name: 'Store 30',
+  street1: '1401 Boul. Talbot',
+  // street2: '',
+  city: 'Chicoutimi',
+  state: 'QC',
+  zip: 'G7H 5N6',
+  country: 'CA',
+  phone: '4185490309',
+});
 
-fromAddress.save().then(console.log).catch(console.log);
+// const fromAddress = new api.Address({
+//   company: "TEST",
+//   name: 'TEST',
+//   street1: '358 S 700 E',
+//   street2: 'STE B',
+//   city: 'Salt Lake City',
+//   state: 'UT',
+//   zip: '84102',
+//   country: 'US',
+//   phone: '4165555556',
+//   email: 'TEST123@YOPMAIL.COM',
+//   // verify: ['delivery'],
+// });
 
-toAddress.save().then(console.log).catch(console.log);
+
+// fromAddress.save().then(console.log).catch(console.log);
+
+// toAddress.save().then(console.log).catch(console.log);
 
 const customsInfo = new api.CustomsInfo({
     eel_pfc: 'NOEEI 30.37(a)',
@@ -64,38 +74,43 @@ const customsInfo = new api.CustomsInfo({
 });
 
 const parcel = new api.Parcel({
-    length: 10,
-    width: 8,
-    height: 1,
-    weight: 4,
-    mode: 'test'
+    length: 20,
+    width: 10,
+    height: 5,
+    weight: 2,
 });
 
-parcel.save().then(console.log).catch(console.log);
+// parcel.save().then(console.log).catch(console.log);
 
 const shipment = new api.Shipment({
     to_address: toAddress,
     from_address: fromAddress,
     parcel: parcel,
-    customs_info: customsInfo,
+    // customs_info: customsInfo,
     options: {
      label_format: "PDF",
-     delivery_confirmation: 'ADULT_SIGNATURE'
+    //  delivery_confirmation: 'ADULT_SIGNATURE'
     },
-    carrier_accounts: ['ca_09df5bb08bab4da3aeb7b26ce6a79a1d']
+    carrier_accounts: ['ca_62e83d60f01846f2b639b5ffe51b2339']
 });
 
-shipment.save().then(console.log).catch(console.log);
+// shipment.save().then(console.log).catch(console.log);
 
 // ============buy shipment by ID============
 
-// api.Shipment.retrieve('shp_48714a5c763a448bb2c918cb3689ebac').then(s => {
-//   s.buy('rate_f9ebe56cce184feca10ed4e84014efab').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_ee0003a1570c49be910c3e60ded9e663').then(s => {
+//   s.buy('rate_ccedfb713a0c40d2b0ff68876352a7f3').then(console.log).catch(console.log);
 // }).catch(console.log);
 
 
 // ============buy shipment by lowest rate============
 
-// api.Shipment.retrieve('shp_86144f0c99d94866a5b9b28d43b78686').then(s => {
-//     s.buy(s.lowestRate(), 249.99).then(console.log).catch(console.log);
-//   }).catch(console.log);
+// shipment.save().then(buyShipment => {
+//   shipment.buy(shipment.lowestRate())
+//     .then(console.log).catch(console.log);
+// }).catch(console.log);
+
+
+
+
+
