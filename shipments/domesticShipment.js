@@ -9,30 +9,29 @@ const api = new Easypost(apiKey);
 
 const toAddress = new api.Address({
   // company: "TEST",
-  name: 'Gary Lenhart',
-  street1: '1310 43rd Ave',
-  street2: 'Apt 1',
-  city: 'San Francisco',
-  state: 'CA',
-  zip: '94122',
+  name: 'Person',
+  street1: '2035 E 2700 S',
+  street2: '#6',
+  city: 'Salt Lake City',
+  state: 'UT',
+  zip: '84109',
   country: 'US',
-  // phone: '4165555556',
+  phone: '8011234567',
   // email: 'TEST123@YOPMAIL.COM',
   // verify: ['delivery'],
   // residential: true
 });
 
 const fromAddress = new api.Address({
-  // company: "TEST",
-  name: 'CardCow.com',
-  street1: '97 Grant Rd',
-  // street2: 'STE B',
-  city: 'Harvard',
-  state: 'MA',
-  zip: '01451',
+  company: "The UPS Store",
+  street1: '385 S 700 E',
+  street2: 'STE B',
+  city: 'Salt Lake City',
+  state: 'UT',
+  zip: '84102',
   country: 'US',
-  phone: '7812692273',
-  // email: 'store3851@theupsstore.com',
+  phone: '8015398351',
+  email: 'store3851@theupsstore.com',
   // verify: ['delivery'],
 });
 
@@ -62,16 +61,15 @@ const shipment = new api.Shipment({
   from_address: fromAddress,
   parcel: parcel,
     options: {
-      label_format: 'PNG',
+      label_format: 'PDF',
       label_size: '4x6',
-      hazmat: 'ORMD',
       // print_custom_2: 'IK',
       // print_custom_2: 123456
       // additional_handling: true,
       // delivery_confirmation: 'ADULT_SIGNATURE'
       // currency: 'USD'
     },
-    carrier_accounts: ['ca_b281591570e24e0c961a09901a5c2b57', 'ca_df03ec256385433aa343858de35adca8']
+    carrier_accounts: ['ca_df03ec256385433aa343858de35adca8']
 });
 
 
