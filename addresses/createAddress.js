@@ -10,14 +10,15 @@ const api = new Easypost(apiKey);
 // To address 
 
 const toAddress = new api.Address({
-    name: "The Dude",
-    street1: "607 Venezia Ave",
-    city: "Venice",
-    state: "CA",
-    zip: "90291",
-    country: "US",
-    phone: "5623214422",
-    verify: ["delivery"]
+    name: "Kaiser Bloc",
+    street1: "626 Metro Centre II",
+    street2: "21 Lam Hing Street",
+    city: "Kowloon Bay",
+    state: "Kowloon",
+    zip: "",
+    country: "HK",
+    phone: "98765432",
+    // verify: ["delivery"]
 });
 
 toAddress.save().then(console.log);

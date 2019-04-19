@@ -17,17 +17,17 @@ const shipment = new api.Shipment({
     parcel: ship.parcel,
     customs_info: ship.customs_info,
     options: ship.options,
-    carrier_accounts: ['ca_09df5bb08bab4da3aeb7b26ce6a79a1d']
+    carrier_accounts: ['ca_b281591570e24e0c961a09901a5c2b57']
 })
 
-shipment.save().then(console.log).catch(console.log);
+// shipment.save().then(console.log).catch(console.log);
 
 
 //============buy shipment by lowest rate============
-// shipment.save().then(buyShipment => {
-//   shipment.buy(shipment.lowestRate())
-//     .then(console.log).catch(console.log);
-// }).catch(console.log);
+shipment.save().then(buyShipment => {
+  shipment.buy(shipment.lowestRate())
+    .then(console.log).catch(console.log);
+}).catch(console.log);
 
 //============buy shipment by carrier name/service type============
 // shipment.save().then(buyShipment => {
@@ -39,6 +39,3 @@ shipment.save().then(console.log).catch(console.log);
 // api.Shipment.retrieve('shp_ad69dfbe076144f5b668dcebcfb1b075').then(s => {
 //   s.buy('rate_128f71cf037944dc85b65ba3cd22143b').then(console.log).catch(console.log);
 // }).catch(console.log);
-
-
-

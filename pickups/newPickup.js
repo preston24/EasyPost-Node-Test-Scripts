@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey
 const api = new Easypost(apiKey);
 
 
@@ -22,16 +22,16 @@ const api = new Easypost(apiKey);
 //     phone: '5481855189',
 // });
 
-const address = 'adr_7919300bb0444c9d890f2585438289a0'
-const shipment = 'shp_ee0003a1570c49be910c3e60ded9e663';
+const address = 'adr_eb425cf664714bb8b3bacede9a82cf5b'
+const shipment = 'shp_34a2a647507649b793bd8eff61b1ab68';
 
 const pickup = new api.Pickup({
     address,
     shipment,
     reference: 'my-first-pickup',
-    min_datetime: '2019-03-30 10:30:00',
-    max_datetime: '2019-04-02 10:30:00',
-    is_account_address: false,
+    min_datetime: '2019-04-18 17:00:00',
+    max_datetime: '2019-04-18 19:00:00',
+    // is_account_address: false,
     instructions: 'Special pickup instructions',
 });
 

@@ -3,12 +3,12 @@ require('dotenv').config();
 
 const Easypost = require('@easypost/api');
 const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey
+const apiKey = process.env.prodKey
 const api = new Easypost(apiKey);
 
 
 const toAddress = new api.Address({
-  // company: "TEST",
+  company: "TEST",
   name: 'Person',
   street1: '2035 E 2700 S',
   street2: '#6',
@@ -17,9 +17,9 @@ const toAddress = new api.Address({
   zip: '84109',
   country: 'US',
   phone: '8011234567',
-  // email: 'TEST123@YOPMAIL.COM',
-  // verify: ['delivery'],
-  // residential: true
+  email: 'TEST123@YOPMAIL.COM',
+  verify: ['delivery'],
+  residential: true,
 });
 
 const fromAddress = new api.Address({
@@ -32,7 +32,7 @@ const fromAddress = new api.Address({
   country: 'US',
   phone: '8015398351',
   email: 'store3851@theupsstore.com',
-  // verify: ['delivery'],
+  verify: ['delivery'],
 });
 
 
@@ -61,15 +61,17 @@ const shipment = new api.Shipment({
   from_address: fromAddress,
   parcel: parcel,
     options: {
-      label_format: 'PDF',
-      label_size: '4x6',
-      // print_custom_2: 'IK',
-      // print_custom_2: 123456
+      // label_format: 'PNG',
+      // label_size: '7x4.75',
       // additional_handling: true,
       // delivery_confirmation: 'ADULT_SIGNATURE'
       // currency: 'USD'
+      // print_custom_1_code: 'PO',
+      // print_custom_1: 78910,
+      // print_custom_2_code: 'IK',
+      // print_custom_2: 123456
     },
-    carrier_accounts: ['ca_df03ec256385433aa343858de35adca8']
+    carrier_accounts: ['ca_09df5bb08bab4da3aeb7b26ce6a79a1d']
 });
 
 

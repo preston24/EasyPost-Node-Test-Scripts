@@ -20,36 +20,36 @@ const api = new Easypost(apiKey);
   phone: '6135699941',
 });
 
-const fromAddress = new api.Address({
-  // company: 'Store 30',
-  name: 'Store 30',
-  street1: '1401 Boul. Talbot',
-  // street2: '',
-  city: 'Chicoutimi',
-  state: 'QC',
-  zip: 'G7H 5N6',
-  country: 'CA',
-  phone: '4185490309',
-});
-
 // const fromAddress = new api.Address({
-//   company: "TEST",
-//   name: 'TEST',
-//   street1: '358 S 700 E',
-//   street2: 'STE B',
-//   city: 'Salt Lake City',
-//   state: 'UT',
-//   zip: '84102',
-//   country: 'US',
-//   phone: '4165555556',
-//   email: 'TEST123@YOPMAIL.COM',
-//   // verify: ['delivery'],
+//   // company: 'Store 30',
+//   name: 'Store 30',
+//   street1: '1401 Boul. Talbot',
+//   // street2: '',
+//   city: 'Chicoutimi',
+//   state: 'QC',
+//   zip: 'G7H 5N6',
+//   country: 'CA',
+//   phone: '4185490309',
 // });
 
+const fromAddress = new api.Address({
+  company: "TEST",
+  name: 'TEST',
+  street1: '358 S 700 E',
+  street2: 'STE B',
+  city: 'Salt Lake City',
+  state: 'UT',
+  zip: '84102',
+  country: 'US',
+  phone: '4165555556',
+  email: 'TEST123@YOPMAIL.COM',
+  // verify: ['delivery'],
+});
 
-// fromAddress.save().then(console.log).catch(console.log);
 
-// toAddress.save().then(console.log).catch(console.log);
+fromAddress.save().then(console.log).catch(console.log);
+
+toAddress.save().then(console.log).catch(console.log);
 
 const customsInfo = new api.CustomsInfo({
     eel_pfc: 'NOEEI 30.37(a)',
@@ -64,10 +64,10 @@ const customsInfo = new api.CustomsInfo({
     customs_items: [
         new api.CustomsItem({
             'description': 'candy',
-            'quantity': 1,
-            'weight': 1.9,
-            'value': 1.00,
-            // 'hs_tariff_number': '',
+            'quantity': 200,
+            'weight': 3.2,
+            'value': 48,
+            'hs_tariff_number': '4908.90.0000',
             'origin_country': 'US',
             // 'currency': 'MXN',
         })],
@@ -80,21 +80,21 @@ const parcel = new api.Parcel({
     weight: 2,
 });
 
-// parcel.save().then(console.log).catch(console.log);
+parcel.save().then(console.log).catch(console.log);
 
 const shipment = new api.Shipment({
     to_address: toAddress,
     from_address: fromAddress,
     parcel: parcel,
-    // customs_info: customsInfo,
+    customs_info: customsInfo,
     options: {
      label_format: "PDF",
-    //  delivery_confirmation: 'ADULT_SIGNATURE'
+    //  delivery_confirmation: 'ADULT_SIGNATURE',
     },
-    carrier_accounts: ['ca_62e83d60f01846f2b639b5ffe51b2339']
+    carrier_accounts: ['ca_ab7cca42bab8490baf712016ee905deb']
 });
 
-// shipment.save().then(console.log).catch(console.log);
+shipment.save().then(console.log).catch(console.log);
 
 // ============buy shipment by ID============
 
@@ -104,13 +104,7 @@ const shipment = new api.Shipment({
 
 
 // ============buy shipment by lowest rate============
-
 // shipment.save().then(buyShipment => {
 //   shipment.buy(shipment.lowestRate())
 //     .then(console.log).catch(console.log);
 // }).catch(console.log);
-
-
-
-
-
