@@ -17,10 +17,10 @@ const shipment = new api.Shipment({
     parcel: ship.parcel,
     customs_info: ship.customs_info,
     options: ship.options,
-    carrier_accounts: ['ca_b281591570e24e0c961a09901a5c2b57']
+    carrier_accounts: [process.env.UPS]
 })
 
-// shipment.save().then(console.log).catch(console.log);
+shipment.save().then(console.log).catch(console.log);
 
 
 //============buy shipment by lowest rate============
@@ -36,6 +36,6 @@ shipment.save().then(buyShipment => {
 // }).catch(console.log);
 
 // ============buy shipment by ID============
-// api.Shipment.retrieve('shp_ad69dfbe076144f5b668dcebcfb1b075').then(s => {
-//   s.buy('rate_128f71cf037944dc85b65ba3cd22143b').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_b3f2d0b69f0849f48913f240f5ab2204').then(s => {
+//   s.buy('rate_46fcc165ccba4a2a80ffeea6a7b15e46').then(console.log).catch(console.log);
 // }).catch(console.log);

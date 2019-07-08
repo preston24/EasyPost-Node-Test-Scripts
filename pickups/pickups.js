@@ -12,6 +12,6 @@ const api = new Easypost(apiKey);
 // api.Pickup.retrieve('pickup_').then(console.log);
 
 // retrieve and buy pickup
-api.Pickup.retrieve('pickup_3ffd7491b7104eee974fb2b8feebf674').then(p => {
-    p.buy('Purolator', 'PurolatorPickup').then(console.log).catch(console.error);
+api.Pickup.retrieve('pickup_169312549782420cb6a9f458128e21be').then(p => {
+    p.buy('USPS', 'NextDay').then(console.log).catch(console.error);
   });

@@ -13,4 +13,4 @@ const batch = api.Batch.retrieve('batch_');
  * created - not the shipments itself. You will need to
  * listen to a webhook event to confirm once the shipments
  * are associated. */
-batch.addShipments(['shp_']).then(console.log);
+batch.addShipments(['shp_344855ffa97848f3879db46aeef27904']).then(console.log);

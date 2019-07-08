@@ -3,36 +3,86 @@ require('dotenv').config();
 
 const Easypost = require('@easypost/api');
 const apiKey = process.env.testKey;
-const apiKey = process.env.prodKey
+// const apiKey = process.env.prodKey
 const api = new Easypost(apiKey);
 
 
 const toAddress = new api.Address({
-  company: "TEST",
-  name: 'Person',
-  street1: '2035 E 2700 S',
-  street2: '#6',
-  city: 'Salt Lake City',
-  state: 'UT',
-  zip: '84109',
-  country: 'US',
-  phone: '8011234567',
-  email: 'TEST123@YOPMAIL.COM',
   verify: ['delivery'],
-  residential: true,
+  company: 'Stark Tower',
+  name: 'Tony Stark',
+  street1: '200 Park Ave',
+  // street2: '',
+  city: 'New York',
+  state: 'NY',
+  zip: '10079',
+  country: 'US',
+  phone: '8012220000',
+  email: 'email@email.com',
+
+      
+
+
+
+  // verify: ['delivery'],
+  // company: 'MIRANDA SAMPLES',
+  // name: 'MIRANDA SAMPLES',
+  // street1: '28 BOX ST APT 601',
+  // // street2: '',
+  // city: 'BROOKLYN',
+  // state: 'NY',
+  // zip: '11222',
+  // country: 'US',
+  // phone: '5417281886'
 });
 
 const fromAddress = new api.Address({
-  company: "The UPS Store",
-  street1: '385 S 700 E',
-  street2: 'STE B',
-  city: 'Salt Lake City',
+  company: 'EasyPost',
+  // name: '',
+  street1: '2889 Ashton Blvd',
+  street2: 'STE 325',
+  city: 'Lehi',
   state: 'UT',
-  zip: '84102',
+  zip: '84043',
   country: 'US',
-  phone: '8015398351',
-  email: 'store3851@theupsstore.com',
-  verify: ['delivery'],
+  phone: '8012220000',
+  email: 'email@email.com',
+
+
+  // company: "The UPS Store",
+  // name: 'John Smith',
+  // street1: '358 S 700 E',
+  // street2: 'STE B',
+  // city: 'Salt Lake City',
+  // state: 'UT',
+  // zip: '84102',
+  // country: 'US',
+  // phone: '4165555556',
+  // email: 'TEST123@YOPMAIL.COM',
+
+  // company: 'POWERSPORT SUPERSTORE, INC',
+  // name: 'Shipping Department',
+  // street1: '1320 ARROW POINT DR STE 105',
+  // city: 'CEDAR PARK',
+  // state: 'TX',
+  // zip: '78613',
+  // country: 'US',
+  // phone: '5125355010',
+  // email: 'purchasing@powersportsuperstore.com'
+
+
+
+
+  //  company: 'Stark Tower',
+  //  name: 'Tony Stark',
+  //  street1: '200 Park Ave',
+  //  // street2: '',
+  //  city: 'New York',
+  //  state: 'NY',
+  //  zip: '10079',
+  //  country: 'US',
+  //  phone: '8012220000',
+  //  email: 'email@email.com',
 });
 
 
@@ -46,9 +96,9 @@ toAddress.save().then(console.log).catch(console.log);
 
 const parcel = new api.Parcel({
   // predefined_package: 'Letter',
-  length: 8,
-  width: 13,
-  height: 12,
+  length: 10,
+  width: 10,
+  height: 10,
   weight: 1,
 });
 
@@ -61,21 +111,34 @@ const shipment = new api.Shipment({
   from_address: fromAddress,
   parcel: parcel,
     options: {
-      // label_format: 'PNG',
-      // label_size: '7x4.75',
+      label_format: 'PNG',
+      // hold_for_pickup: true,
+      // label_size: '4x6',
+      // postage_label_inline: true,
       // additional_handling: true,
-      // delivery_confirmation: 'ADULT_SIGNATURE'
+      // delivery_confirmation: 'NO_SIGNATURE',
       // currency: 'USD'
+      // invoice_number: '5097263',
       // print_custom_1_code: 'PO',
-      // print_custom_1: 78910,
-      // print_custom_2_code: 'IK',
-      // print_custom_2: 123456
+      // print_custom_1: '5125355010-5097263',
+      // print_custom_2_code: 'DP',
+      // print_custom_2: '3490293',
+      // print_custom_3_code: 'IK',
+      // print_custom_3: 'EU02600',
+      // print_custom_2_barcode: true,
+      // pickup_min_datetime: '2019-07-18T07:00:00.000Z',
+      // pickup_max_datetime: '2019-07-22T07:00:00.000Z',
+      // delivery_min_datetime: '2019-07-18T07:00:00.000Z',
+      // delivery_max_datetime: '2019-07-22T07:00:00.000Z',
+      // handling_instructions: 'Gate code 2652 Leave package inside black gate next to mailboxes Call 5703012335 to confirm delivery Take VPOD'
     },
-    carrier_accounts: ['ca_09df5bb08bab4da3aeb7b26ce6a79a1d']
+    carrier_accounts: [process.env.USPS]
 });
 
 
 shipment.save().then(console.log).catch(console.log);
+
+
 
 
 //============buy shipment by lowest rate============
@@ -84,8 +147,9 @@ shipment.save().then(console.log).catch(console.log);
 //     .then(console.log).catch(console.log);
 // }).catch(console.log);
 
-// ============Buy Shipment by ID============
 
-// api.Shipment.retrieve('shp_09ecc17b5db448739dea2b9392dd3592').then(s => {
-//   s.buy('rate_95a5167d00974908aece7c0d7f623d9a').then(console.log).catch(console.log);
+
+// ============Buy Shipment by ID============
+// api.Shipment.retrieve('shp_0abccac5c0324e85944673db614993b4').then(s => {
+//   s.buy('rate_5b4485da2d294056b1355a1b67002eb6').then(console.log).catch(console.log);
 // }).catch(console.log);

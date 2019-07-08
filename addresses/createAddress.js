@@ -10,15 +10,15 @@ const api = new Easypost(apiKey);
 // To address 
 
 const toAddress = new api.Address({
-    name: "Kaiser Bloc",
-    street1: "626 Metro Centre II",
-    street2: "21 Lam Hing Street",
-    city: "Kowloon Bay",
-    state: "Kowloon",
-    zip: "",
-    country: "HK",
-    phone: "98765432",
-    // verify: ["delivery"]
+    verify: ['delivery'],
+    company: 'TEST',
+    name: 'TEST',
+    street1: '636 Godwin Ave',
+    street2: 'APT 18B',
+    city: 'Midland Park',
+    state: 'NJ',
+    zip: '07432',
+    country: 'US',
 });
 
 toAddress.save().then(console.log);

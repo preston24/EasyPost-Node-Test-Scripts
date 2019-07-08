@@ -13,8 +13,15 @@ const api = new Easypost(apiKey);
 //     shipments: ['shp_9b4f1c5803da4684aff4a16ddeb16ba6', 'shp_68b9bd742dda47aeb5f28a9bd457e632'],
 // });
 
-batch = new api.Batch({
-    shipments: [{id: 'shp_9b4f1c5803da4684aff4a16ddeb16ba6'}]
-  });
+// batch = new api.Batch({
+//     shipments: [{id: 'shp_aba84c98de9d4bd697c582d70a5f8715'}]
+//   });
 
-batch.save().then(console.log).catch(console.log);
+// batch.save().then(console.log).catch(console.log);
+
+
+
+
+// api.Batch.retrieve('batch_98d86b62266e46f7b7f5c07c2f66273e').then(b => {
+//   b.createScanForm().then(console.log);
+// });
