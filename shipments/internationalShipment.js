@@ -34,18 +34,6 @@ const api = new Easypost(apiKey);
   // email: 'TEST123@YOPMAIL.COM',
 
 
-
-  // name: "CAROLINA HURTADO",
-  // // company:"",
-  // street1: "626 Pale San Vitores Road",
-  // city: "Tamuning",
-  // state: "GU",
-  // // zip: "96931",
-  // country: "GU",
-  // phone: "0467159999",
-  // // email: "mack@blackbearfulfillment.com.au"
-
-
   // name: "The Dude",
   // street1: "Summit House",
   // street2: "Athey St",
@@ -79,17 +67,6 @@ const fromAddress = new api.Address({
   // zip: 'M5G 1X5',
   // country: 'CA',
   // phone: '6135699941',
-
-
-
-//   company: "Muscle & Strength, LLC",
-//     street1: "1180 First Street South",
-//     city: "Columbia",
-//     state: "SC",
-//     zip: "29209",
-//     country: "US",
-//     phone: "18005379910",
-//     email: "support@muscleandstrength.com",
 });
 
 
@@ -136,13 +113,14 @@ const shipment = new api.Shipment({
     customs_info: customsInfo,
     // is_return: true,
     options: {
-      incoterm: 'DDP'
+      bill_third_party_account: '12345'
+    //  incoterm: 'DAP',
     //  label_format: "PDF",
     //  delivery_confirmation: 'do_not_safe_drop',
     //  hold_for_pickup: false,
-    // handling_instructions: 'These are my instructions!!!!!'
+    //  handling_instructions: 'These are my instructions!!!!!'
     },
-    carrier_accounts: [process.env.USPS],
+    carrier_accounts: ['ca_ee4c27915ef845f49f43f9302a7aa21f'],
 });
 
 shipment.save().then(console.log).catch(console.log);
@@ -157,8 +135,8 @@ shipment.save().then(console.log).catch(console.log);
 
 
 // ============buy shipment by lowest rate============
-shipment.save().then(buyShipment => {
-  shipment.buy(shipment.lowestRate())
-    .then(console.log).catch(console.log);
-}).catch(console.log);
+// shipment.save().then(buyShipment => {
+//   shipment.buy(shipment.lowestRate())
+//     .then(console.log).catch(console.log);
+// }).catch(console.log);
 

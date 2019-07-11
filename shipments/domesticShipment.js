@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey
 const api = new Easypost(apiKey);
 
 
@@ -19,21 +19,6 @@ const toAddress = new api.Address({
   country: 'US',
   phone: '8012220000',
   email: 'email@email.com',
-
-      
-
-
-
-  // verify: ['delivery'],
-  // company: 'MIRANDA SAMPLES',
-  // name: 'MIRANDA SAMPLES',
-  // street1: '28 BOX ST APT 601',
-  // // street2: '',
-  // city: 'BROOKLYN',
-  // state: 'NY',
-  // zip: '11222',
-  // country: 'US',
-  // phone: '5417281886'
 });
 
 const fromAddress = new api.Address({
@@ -59,18 +44,6 @@ const fromAddress = new api.Address({
   // country: 'US',
   // phone: '4165555556',
   // email: 'TEST123@YOPMAIL.COM',
-
-  // company: 'POWERSPORT SUPERSTORE, INC',
-  // name: 'Shipping Department',
-  // street1: '1320 ARROW POINT DR STE 105',
-  // city: 'CEDAR PARK',
-  // state: 'TX',
-  // zip: '78613',
-  // country: 'US',
-  // phone: '5125355010',
-  // email: 'purchasing@powersportsuperstore.com'
-
-
 
 
   //  company: 'Stark Tower',
@@ -111,7 +84,7 @@ const shipment = new api.Shipment({
   from_address: fromAddress,
   parcel: parcel,
     options: {
-      label_format: 'PNG',
+      label_format: 'PDF',
       // hold_for_pickup: true,
       // label_size: '4x6',
       // postage_label_inline: true,
@@ -119,20 +92,20 @@ const shipment = new api.Shipment({
       // delivery_confirmation: 'NO_SIGNATURE',
       // currency: 'USD'
       // invoice_number: '5097263',
-      // print_custom_1_code: 'PO',
-      // print_custom_1: '5125355010-5097263',
+      print_custom_1_barcode: true,
+      // print_custom_1_code: 'SY',
+      print_custom_1: '1',
       // print_custom_2_code: 'DP',
       // print_custom_2: '3490293',
       // print_custom_3_code: 'IK',
       // print_custom_3: 'EU02600',
-      // print_custom_2_barcode: true,
       // pickup_min_datetime: '2019-07-18T07:00:00.000Z',
       // pickup_max_datetime: '2019-07-22T07:00:00.000Z',
       // delivery_min_datetime: '2019-07-18T07:00:00.000Z',
       // delivery_max_datetime: '2019-07-22T07:00:00.000Z',
       // handling_instructions: 'Gate code 2652 Leave package inside black gate next to mailboxes Call 5703012335 to confirm delivery Take VPOD'
     },
-    carrier_accounts: [process.env.USPS]
+    carrier_accounts: [process.env.UPS]
 });
 
 
@@ -142,10 +115,10 @@ shipment.save().then(console.log).catch(console.log);
 
 
 //============buy shipment by lowest rate============
-// shipment.save().then(buyShipment => {
-//   shipment.buy(shipment.lowestRate())
-//     .then(console.log).catch(console.log);
-// }).catch(console.log);
+shipment.save().then(buyShipment => {
+  shipment.buy(shipment.lowestRate())
+    .then(console.log).catch(console.log);
+}).catch(console.log);
 
 
 
@@ -153,3 +126,5 @@ shipment.save().then(console.log).catch(console.log);
 // api.Shipment.retrieve('shp_0abccac5c0324e85944673db614993b4').then(s => {
 //   s.buy('rate_5b4485da2d294056b1355a1b67002eb6').then(console.log).catch(console.log);
 // }).catch(console.log);
+
+
