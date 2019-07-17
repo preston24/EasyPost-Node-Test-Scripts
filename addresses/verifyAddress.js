@@ -10,13 +10,13 @@ const verifiableAddress = new api.Address({
     verify: ['delivery'],
     // company: 'BAtch test',
     name: 'Test',
-    street1: '3255 Big Spruce Way',
+    street1: '10 Brougham Hays',
     // street2: 'APT 302',
-    city: 'Park City',
-    state: 'UT',
-    zip: '884098',
-    country: 'US',
-    // phone: '9546681319',
+    city: 'Bath',
+    state: 'Somerset',
+    zip: 'BA23QU',
+    country: 'GB',
+    phone: '447538431285',
     // email: 'barb4020@aol.com'
   });
   

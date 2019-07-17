@@ -22,28 +22,28 @@ const toAddress = new api.Address({
 });
 
 const fromAddress = new api.Address({
-  company: 'EasyPost',
-  // name: '',
-  street1: '2889 Ashton Blvd',
-  street2: 'STE 325',
-  city: 'Lehi',
-  state: 'UT',
-  zip: '84043',
-  country: 'US',
-  phone: '8012220000',
-  email: 'email@email.com',
-
-
-  // company: "The UPS Store",
-  // name: 'John Smith',
-  // street1: '358 S 700 E',
-  // street2: 'STE B',
-  // city: 'Salt Lake City',
+  // company: 'EasyPost',
+  // // name: '',
+  // street1: '2889 Ashton Blvd',
+  // street2: 'STE 325',
+  // city: 'Lehi',
   // state: 'UT',
-  // zip: '84102',
+  // zip: '84043',
   // country: 'US',
-  // phone: '4165555556',
-  // email: 'TEST123@YOPMAIL.COM',
+  // phone: '8012220000',
+  // email: 'email@email.com',
+
+
+  company: "The UPS Store",
+  name: 'John Smith',
+  street1: '358 S 700 E',
+  street2: 'STE B',
+  city: 'Salt Lake City',
+  state: 'UT',
+  zip: '84102',
+  country: 'US',
+  phone: '4165555556',
+  email: 'TEST123@YOPMAIL.COM',
 
 
   //  company: 'Stark Tower',
@@ -84,17 +84,18 @@ const shipment = new api.Shipment({
   from_address: fromAddress,
   parcel: parcel,
     options: {
-      label_format: 'PDF',
+      // label_format: 'PDF',
       // hold_for_pickup: true,
       // label_size: '4x6',
       // postage_label_inline: true,
       // additional_handling: true,
-      // delivery_confirmation: 'NO_SIGNATURE',
+      // delivery_confirmation: 'ADULT_SIGNATURE',
+      // alcohol: true,
       // currency: 'USD'
-      // invoice_number: '5097263',
-      print_custom_1_barcode: true,
+      invoice_number: '123456',
+      // print_custom_1_barcode: true,
       // print_custom_1_code: 'SY',
-      print_custom_1: '1',
+      print_custom_1: 'TEST',
       // print_custom_2_code: 'DP',
       // print_custom_2: '3490293',
       // print_custom_3_code: 'IK',
@@ -105,7 +106,7 @@ const shipment = new api.Shipment({
       // delivery_max_datetime: '2019-07-22T07:00:00.000Z',
       // handling_instructions: 'Gate code 2652 Leave package inside black gate next to mailboxes Call 5703012335 to confirm delivery Take VPOD'
     },
-    carrier_accounts: [process.env.UPS]
+    carrier_accounts: [process.env.FedEx]
 });
 
 
@@ -126,5 +127,3 @@ shipment.save().then(buyShipment => {
 // api.Shipment.retrieve('shp_0abccac5c0324e85944673db614993b4').then(s => {
 //   s.buy('rate_5b4485da2d294056b1355a1b67002eb6').then(console.log).catch(console.log);
 // }).catch(console.log);
-
-

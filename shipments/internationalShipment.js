@@ -46,27 +46,27 @@ const api = new Easypost(apiKey);
 });
 
 const fromAddress = new api.Address({
-  company: "TEST",
-  name: 'TEST',
-  street1: '358 S 700 E',
-  street2: 'STE B',
-  city: 'Salt Lake City',
-  state: 'UT',
-  zip: '84102',
-  country: 'US',
-  phone: '4165555556',
-  email: 'TEST123@YOPMAIL.COM',
+  // company: "TEST",
+  // name: 'TEST',
+  // street1: '358 S 700 E',
+  // street2: 'STE B',
+  // city: 'Salt Lake City',
+  // state: 'UT',
+  // zip: '84102',
+  // country: 'US',
+  // phone: '4165555556',
+  // email: 'TEST123@YOPMAIL.COM',
 
 
-  //  // company: '',
-  // name: 'Test',
-  // street1: '600 University Ave',
-  // // street2: '',
-  // city: 'Toronto',
-  // state: 'ON',
-  // zip: 'M5G 1X5',
-  // country: 'CA',
-  // phone: '6135699941',
+   // company: '',
+  name: 'Test',
+  street1: '600 University Ave',
+  // street2: '',
+  city: 'Toronto',
+  state: 'ON',
+  zip: 'M5G 1X5',
+  country: 'CA',
+  phone: '6135699941',
 });
 
 
@@ -120,7 +120,7 @@ const shipment = new api.Shipment({
     //  hold_for_pickup: false,
     //  handling_instructions: 'These are my instructions!!!!!'
     },
-    carrier_accounts: ['ca_ee4c27915ef845f49f43f9302a7aa21f'],
+    carrier_accounts: ['ca_62e83d60f01846f2b639b5ffe51b2339'],
 });
 
 shipment.save().then(console.log).catch(console.log);
@@ -139,4 +139,3 @@ shipment.save().then(console.log).catch(console.log);
 //   shipment.buy(shipment.lowestRate())
 //     .then(console.log).catch(console.log);
 // }).catch(console.log);
-
