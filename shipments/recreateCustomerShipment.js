@@ -25,12 +25,17 @@ delete ship.parcel.id
 delete ship.parcel.created_at
 delete ship.parcel.mode
 delete ship.parcel.updated_at
-if(ship.customs_info){
+
+if (ship.parcel.predefined_package === null) {
+  delete ship.parcel.predefined_package
+};
+
+if (ship.customs_info) {
 delete ship.customs_info.id
 delete ship.customs_info.created_at
 delete ship.customs_info.mode
 delete ship.customs_info.updated_at
-for(i = 0; i < ship.customs_info.customs_items.length; i++){
+for (i = 0; i < ship.customs_info.customs_items.length; i++) {
   delete ship.customs_info.customs_items[i].id
   delete ship.customs_info.customs_items[i].created_at
   delete ship.customs_info.customs_items[i].mode
@@ -38,13 +43,14 @@ for(i = 0; i < ship.customs_info.customs_items.length; i++){
  }
 }
 
+
 const shipment = new api.Shipment({
     to_address: ship.to_address,
     from_address: ship.from_address,
     parcel: ship.parcel,
     customs_info: ship.customs_info,
     options: ship.options,
-    carrier_accounts: [process.env.UPS]
+    carrier_accounts: ['ca_40f4c9257f094b5dacb082da995bb6a7']
 })
 
 shipment.save().then(console.log).catch(console.log);
@@ -63,6 +69,6 @@ shipment.save().then(console.log).catch(console.log);
 // }).catch(console.log);
 
 // ============buy shipment by ID============
-// api.Shipment.retrieve('shp_91d4c67853904f20a4fa10792dc1b6d8').then(s => {
-//   s.buy('rate_e40642b6457f44aa90b301943cd7834c').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_b8f9c51e58614f3eab2ee6739bc93af7').then(s => {
+//   s.buy('rate_eeb9c4351caa4cb095b42a1e8c1a3302').then(console.log).catch(console.log);
 // }).catch(console.log);

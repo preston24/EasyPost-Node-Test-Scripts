@@ -7,20 +7,21 @@ const apiKey = process.env.testKey;
 const api = new Easypost(apiKey);
 
 const verifiableAddress = new api.Address({
-    verify: ['delivery'],
-    // company: 'BAtch test',
-    name: 'Test',
-    street1: '10 Brougham Hays',
-    // street2: 'APT 302',
-    city: 'Bath',
-    state: 'Somerset',
-    zip: 'BA23QU',
-    country: 'GB',
-    phone: '447538431285',
-    // email: 'barb4020@aol.com'
+    verify_strict: ['delivery'],
+    company: 'Tokan Manufacturing',
+    name: 'Sebastian Osorio',
+    street1: '9850, St-Urbain',
+    // street2: '1209',
+    city: 'Montreal',
+    state: 'QC',
+    zip: 'H3L2T2',
+    country: 'CA',
+    phone: '5143841312',
+    email: 'sebastian@tokan.ca'
   });
   
 // verifiableAddress.save().then(console.log);
   
 // This will show the errors
 verifiableAddress.save().then(r => console.log(JSON.stringify(r)));
+

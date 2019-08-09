@@ -12,8 +12,11 @@ const api = new Easypost(apiKey);
 
 const tracker1 = new api.Tracker({
   // tracking_code: trackArray[1],
-  tracking_code: 'JVGL0351390000138639',
-  carrier: 'DHLExpress'
+  tracking_code: '9400136897846025878544',
+  carrier: 'USPS',
+    options: {
+      is_return: true,
+    },
 });
 
 

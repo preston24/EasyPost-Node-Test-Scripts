@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-// const apiKey = process.env.testKey;
-const apiKey = process.env.prodKey
+const apiKey = process.env.testKey;
+// const apiKey = process.env.prodKey
 const api = new Easypost(apiKey);
 
 
@@ -19,6 +19,19 @@ const toAddress = new api.Address({
   country: 'US',
   phone: '8012220000',
   email: 'email@email.com',
+
+
+  //   company: 'EasyPost',
+  // // name: '',
+  // street1: '2889 Ashton Blvd',
+  // street2: 'STE 325',
+  // city: 'Lehi',
+  // state: 'UT',
+  // zip: '84043',
+  // country: 'US',
+  // phone: '8012220000',
+  // email: 'email@email.com',
+  // residential: false,
 });
 
 const fromAddress = new api.Address({
@@ -68,10 +81,10 @@ toAddress.save().then(console.log).catch(console.log);
 // toAddress.save().then(r => console.log(JSON.stringify(r))).catch(console.log);
 
 const parcel = new api.Parcel({
-  // predefined_package: 'Letter',
-  length: 10,
-  width: 10,
-  height: 10,
+  predefined_package: 'Letter',
+  // length: 10,
+  // width: 10,
+  // height: 10,
   weight: 1,
 });
 
@@ -83,6 +96,8 @@ const shipment = new api.Shipment({
   to_address: toAddress,
   from_address: fromAddress,
   parcel: parcel,
+  // reference: '1234',
+  // is_return: true,
     options: {
       // label_format: 'PDF',
       // hold_for_pickup: true,
@@ -92,21 +107,21 @@ const shipment = new api.Shipment({
       // delivery_confirmation: 'ADULT_SIGNATURE',
       // alcohol: true,
       // currency: 'USD'
-      invoice_number: '123456',
+      // invoice_number: '123456',
       // print_custom_1_barcode: true,
       // print_custom_1_code: 'SY',
-      print_custom_1: 'TEST',
+      // print_custom_1: 'TEST',
       // print_custom_2_code: 'DP',
-      // print_custom_2: '3490293',
+      // print_custom_2: '123456',
       // print_custom_3_code: 'IK',
-      // print_custom_3: 'EU02600',
+      // print_custom_3: '7890',
       // pickup_min_datetime: '2019-07-18T07:00:00.000Z',
       // pickup_max_datetime: '2019-07-22T07:00:00.000Z',
       // delivery_min_datetime: '2019-07-18T07:00:00.000Z',
       // delivery_max_datetime: '2019-07-22T07:00:00.000Z',
-      // handling_instructions: 'Gate code 2652 Leave package inside black gate next to mailboxes Call 5703012335 to confirm delivery Take VPOD'
+      // handling_instructions: 'LEAVE AT DOOR'
     },
-    carrier_accounts: [process.env.FedEx]
+    carrier_accounts: ['ca_6542437f42534b8fa49e07f65d8806a7']
 });
 
 
@@ -114,12 +129,11 @@ shipment.save().then(console.log).catch(console.log);
 
 
 
-
 //============buy shipment by lowest rate============
-shipment.save().then(buyShipment => {
-  shipment.buy(shipment.lowestRate())
-    .then(console.log).catch(console.log);
-}).catch(console.log);
+// shipment.save().then(buyShipment => {
+//   shipment.buy(shipment.lowestRate())
+//     .then(console.log).catch(console.log);
+// }).catch(console.log);
 
 
 

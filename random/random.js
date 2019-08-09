@@ -2,13 +2,12 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-// const apiKey = process.env.testKey;
-const apiKey = process.env.prodKey
+const apiKey = process.env.testKey;
+// const apiKey = process.env.prodKey
 const api = new Easypost(apiKey);
 
 
-// Covert label from PNG to ZPL 
-
+// ===============Covert label from PNG to ZPL====================
 // api.Shipment.retrieve('shp_cfeb59c6245242f282f3e21960cb040a').then(shipment => {
 //     shipment.convertLabelFormat('ZPL').then(console.log);
 //   }).catch(console.log);
@@ -22,11 +21,11 @@ const api = new Easypost(apiKey);
 
 
 
-// const scanForm = new api.ScanForm({
-//     shipments: ['shp_aba84c98de9d4bd697c582d70a5f8715']
-//   });
+const scanForm = new api.ScanForm({
+    shipments: ['shp_290e5f47195147399362fbdad3b31cfd']
+  });
   
-//   scanForm.save().then(console.log).catch(console.log);
+  scanForm.save().then(console.log).catch(console.log);
 
 
 
@@ -51,4 +50,4 @@ const api = new Easypost(apiKey);
 
 //   api.User.retrieve('').then(console.log).catch(console.log);
 
-  api.CarrierAccount.all().then(console.log);
+  // api.CarrierAccount.all().then(console.log);
