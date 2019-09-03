@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
@@ -81,10 +81,10 @@ toAddress.save().then(console.log).catch(console.log);
 // toAddress.save().then(r => console.log(JSON.stringify(r))).catch(console.log);
 
 const parcel = new api.Parcel({
-  predefined_package: 'Letter',
-  // length: 10,
-  // width: 10,
-  // height: 10,
+  // predefined_package: 'FedExSmallBox',
+  length: 10,
+  width: 10,
+  height: 10,
   weight: 1,
 });
 
@@ -99,6 +99,8 @@ const shipment = new api.Shipment({
   // reference: '1234',
   // is_return: true,
     options: {
+      label_date: '2019-08-27'
+      // endorsement: 'RETURN_SERVICE_REQUESTED'
       // label_format: 'PDF',
       // hold_for_pickup: true,
       // label_size: '4x6',
@@ -121,7 +123,7 @@ const shipment = new api.Shipment({
       // delivery_max_datetime: '2019-07-22T07:00:00.000Z',
       // handling_instructions: 'LEAVE AT DOOR'
     },
-    carrier_accounts: ['ca_6542437f42534b8fa49e07f65d8806a7']
+    carrier_accounts: ['ca_9f4f30602705495a975b28b4daf5c8f2']
 });
 
 
@@ -130,14 +132,14 @@ shipment.save().then(console.log).catch(console.log);
 
 
 //============buy shipment by lowest rate============
-// shipment.save().then(buyShipment => {
-//   shipment.buy(shipment.lowestRate())
-//     .then(console.log).catch(console.log);
-// }).catch(console.log);
+shipment.save().then(buyShipment => {
+  shipment.buy(shipment.lowestRate())
+    .then(console.log).catch(console.log);
+}).catch(console.log);
 
 
 
 // ============Buy Shipment by ID============
-// api.Shipment.retrieve('shp_0abccac5c0324e85944673db614993b4').then(s => {
-//   s.buy('rate_5b4485da2d294056b1355a1b67002eb6').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_3ed6ff1cebb641198c8728d187dc0144').then(s => {
+//   s.buy('rate_ef5e21ce146747f1b86f9cc097611e18').then(console.log).catch(console.log);
 // }).catch(console.log);

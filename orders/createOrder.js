@@ -2,36 +2,34 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
 // set addresses
 const toAddress = new api.Address({
     name: "The Dude",
-    street1: "Summit House",
-    street2: "Athey St",
-    city: "Macclesfield",
-    state: "Cheshire",
-    zip: "SK116QU",
-    country: "GB",
+    street1: "45 Morningside Manor",
+    street2: "",
+    city: "Airdrie",
+    state: "AB",
+    zip: "T4B0K2",
+    country: "CA",
     phone: "1234567890",
     email: "email@email.com",
-    // id: 'adr_89f06d4b3f3d4081b5466166d6d924ef'
 });
 
 const fromAddress = new api.Address({
     name: "The Dude",
-    street1: "Summit House",
-    street2: "Athey St",
-    city: "Macclesfield",
-    state: "Cheshire",
-    zip: "SK116QU",
-    country: "GB",
+    street1: "945A SOUTHGATE DR",
+    street2: "",
+    city: "GUELPH",
+    state: "ON",
+    zip: "N1L0B9",
+    country: "CA",
     phone: "1234567890",
     email: "email@email.com",
-    // id: 'adr_e7bd97fbea5243b0b8d27a70b90efbde'
 });
 
 
@@ -142,7 +140,7 @@ const order = new api.Order({
                 // width: 8,
                 // height: 3,
                 // length: 10,
-                id: 'prcl_f4c09fc8c09649b8a22a10f471b421d2'
+                id: 'prcl_2d79d00b2a0449ee89f5a40b470f7338'
             },
             // customs_info
         }),
@@ -152,7 +150,7 @@ const order = new api.Order({
                 // width: 8,
                 // height: 3,
                 // length: 10,
-                id: 'prcl_3c6eacb082ed44daa93922ca40334f43'
+                id: 'prcl_3ecf0572c1a64d2e8f7e001fba7b9f69'
             },
             // customs_info2
         }),
@@ -178,7 +176,9 @@ const order = new api.Order({
         // }),
     ],
     // carrier_accounts: [{"id":"ca_e5ecb8da97d643349f1c57ccd143eb91"}, {"id":"ca_b281591570e24e0c961a09901a5c2b57"}],
-    carrier_accounts: [ {"id":"ca_4e6adbf3b21e44d4995ae42159ece47d"}],
+    carrier_accounts: [ {"id":"ca_792303b8961b4d3296604c5b3d027cb5"}],
 });
 
 order.save().then(console.log).catch(console.log);
+
+

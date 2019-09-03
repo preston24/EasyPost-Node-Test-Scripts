@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const Easypost = require('@easypost/api');
 const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey
+// const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
@@ -40,8 +40,12 @@ for (i = 0; i < ship.customs_info.customs_items.length; i++) {
   delete ship.customs_info.customs_items[i].created_at
   delete ship.customs_info.customs_items[i].mode
   delete ship.customs_info.customs_items[i].updated_at
+  if(ship.customs_info.customs_items[i].currency === null) {
+    delete ship.customs_info.customs_items[i].currency
+  }
  }
 }
+
 
 
 const shipment = new api.Shipment({
@@ -50,7 +54,7 @@ const shipment = new api.Shipment({
     parcel: ship.parcel,
     customs_info: ship.customs_info,
     options: ship.options,
-    carrier_accounts: ['ca_40f4c9257f094b5dacb082da995bb6a7']
+    carrier_accounts: ['ca_517f8b082f844574b618862913595c22'],
 })
 
 shipment.save().then(console.log).catch(console.log);
@@ -72,3 +76,4 @@ shipment.save().then(console.log).catch(console.log);
 // api.Shipment.retrieve('shp_b8f9c51e58614f3eab2ee6739bc93af7').then(s => {
 //   s.buy('rate_eeb9c4351caa4cb095b42a1e8c1a3302').then(console.log).catch(console.log);
 // }).catch(console.log);
+
