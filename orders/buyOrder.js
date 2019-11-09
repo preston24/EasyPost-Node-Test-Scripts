@@ -2,15 +2,15 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey;
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
 
 
-api.Order.retrieve('order_77ef36de215a4d84aa722f10583d3215').then(order => {
-    order.buy('Canpar', 'Ground').then(console.log).catch(console.log)
+api.Order.retrieve('order_31a7e0a38cbc4f5eb54b81de9ceda8f7').then(order => {
+    order.buy('Purolator', 'PurolatorGround').then(console.log).catch(console.log)
 }).catch(console.log);
 
 

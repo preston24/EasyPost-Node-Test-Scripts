@@ -8,26 +8,16 @@ const api = new Easypost(apiKey);
 
 const verifiableAddress = new api.Address({
     verify_strict: ['delivery'],
-    // company: '',
-    // name: 'Luke Skywalker',
-    // street1: 'Mecca St',
-    // // street2: '1209',
-    // city: 'Amman',
-    // // state: 'CA',
-    // // zip: '12559',
-    // country: 'JO',
-    // phone: '3065265109',
-    // email: 'email@email.com'
-
-    name: "The Dude",
-    street1: "Summit House",
-    street2: "Athey St",
-    city: "Macclesfield",
-    state: "Cheshire",
-    zip: "SK1 16QU",
-    country: "GB",
-    phone: "1234567890",
-    email: "email@email.com"
+    company: '',
+    name: 'Test',
+    street1: '820 E Newfield Dr',
+    // street2: 'RR 3 Stn Main',
+    city: 'Sandy',
+    state: 'UT',
+    zip: '84094',
+    country: 'US',
+    // phone: '18669476872',
+    // email: ''
   });
   
 // verifiableAddress.save().then(console.log).catch(console.log);

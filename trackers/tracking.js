@@ -12,8 +12,8 @@ const api = new Easypost(apiKey);
 
 const tracker1 = new api.Tracker({
   // tracking_code: trackArray[0],
-  tracking_code: '1Z5F60150388835658',
-  carrier: 'UPS'
+  tracking_code: '780501598937',
+  carrier: 'AmazonMws'
 });
 
 

@@ -8,7 +8,7 @@ const api = new Easypost(apiKey);
 
 
 
-api.Batch.retrieve('batch_').then(b => {
+api.Batch.retrieve('').then(b => {
     /* Once createScanForm is complete, a webhook will be
      * fired to indicate that the scan form was created. */
     console.log(b);

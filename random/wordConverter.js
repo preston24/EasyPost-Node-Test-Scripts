@@ -1,4 +1,4 @@
-let words = "poor";
+let words = "so do i Eric";
 words = words.replace(/[.,\/#!$%\^&\*;:{}=\-_`'~()]/g,"")
 
 function emotify(){

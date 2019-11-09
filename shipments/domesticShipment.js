@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-// const apiKey = process.env.testKey;
-const apiKey = process.env.prodKey;
+const apiKey = process.env.testKey;
+// const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
@@ -20,33 +20,19 @@ const toAddress = new api.Address({
   phone: '8012220000',
   email: 'email@email.com',
 
-
-  //   company: 'EasyPost',
-  // // name: '',
-  // street1: '2889 Ashton Blvd',
-  // street2: 'STE 325',
-  // city: 'Lehi',
+  // company: "The UPS Store",
+  // name: 'John Smith',
+  // street1: '358 S 700 E',
+  // street2: 'STE B',
+  // city: 'Salt Lake City',
   // state: 'UT',
-  // zip: '84043',
+  // zip: '84102',
   // country: 'US',
-  // phone: '8012220000',
-  // email: 'email@email.com',
-  // residential: false,
+  // phone: '4165555556',
+  // email: 'TEST123@YOPMAIL.COM',
 });
 
 const fromAddress = new api.Address({
-  // company: 'EasyPost',
-  // // name: '',
-  // street1: '2889 Ashton Blvd',
-  // street2: 'STE 325',
-  // city: 'Lehi',
-  // state: 'UT',
-  // zip: '84043',
-  // country: 'US',
-  // phone: '8012220000',
-  // email: 'email@email.com',
-
-
   company: "The UPS Store",
   name: 'John Smith',
   street1: '358 S 700 E',
@@ -81,11 +67,11 @@ toAddress.save().then(console.log).catch(console.log);
 // toAddress.save().then(r => console.log(JSON.stringify(r))).catch(console.log);
 
 const parcel = new api.Parcel({
-  // predefined_package: 'FedExSmallBox',
+  // predefined_package: 'Parcel',
   length: 10,
   width: 10,
   height: 10,
-  weight: 1,
+  weight: 2.4,
 });
 
 
@@ -96,22 +82,25 @@ const shipment = new api.Shipment({
   to_address: toAddress,
   from_address: fromAddress,
   parcel: parcel,
-  // reference: '1234',
+  // carrier: 'UPS',
+  reference: '1234',
   // is_return: true,
     options: {
-      label_date: '2019-08-27'
+      // label_date: '2019-08-27',
       // endorsement: 'RETURN_SERVICE_REQUESTED'
       // label_format: 'PDF',
       // hold_for_pickup: true,
       // label_size: '4x6',
       // postage_label_inline: true,
       // additional_handling: true,
-      // delivery_confirmation: 'ADULT_SIGNATURE',
+      // delivery_confirmation: 'ADULT_SIGNATURE_RESTRICTED',
+      // registered_mail: true,
+      // return_receipt: true,
       // alcohol: true,
       // currency: 'USD'
-      // invoice_number: '123456',
+      // invoice_number: '6789',
       // print_custom_1_barcode: true,
-      // print_custom_1_code: 'SY',
+      // print_custom_1_code: 'TESTING 123',
       // print_custom_1: 'TEST',
       // print_custom_2_code: 'DP',
       // print_custom_2: '123456',
@@ -122,24 +111,33 @@ const shipment = new api.Shipment({
       // delivery_min_datetime: '2019-07-18T07:00:00.000Z',
       // delivery_max_datetime: '2019-07-22T07:00:00.000Z',
       // handling_instructions: 'LEAVE AT DOOR'
+      cost_center: 'howdy'
     },
-    carrier_accounts: ['ca_9f4f30602705495a975b28b4daf5c8f2']
+    carrier_accounts: ['ca_b892e3d3ac674d6e9ae14d074f328663']
 });
 
 
-shipment.save().then(console.log).catch(console.log);
+// shipment.save().then(console.log).catch(console.log);
 
 
 
 //============buy shipment by lowest rate============
-shipment.save().then(buyShipment => {
-  shipment.buy(shipment.lowestRate())
-    .then(console.log).catch(console.log);
-}).catch(console.log);
+// shipment.save().then(buyShipment => {
+//   shipment.buy(shipment.lowestRate())
+//     .then(console.log).catch(console.log);
+// }).catch(console.log);
 
 
 
 // ============Buy Shipment by ID============
-// api.Shipment.retrieve('shp_3ed6ff1cebb641198c8728d187dc0144').then(s => {
-//   s.buy('rate_ef5e21ce146747f1b86f9cc097611e18').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_08b5fcebd98044ba98f520d89ff76825').then(s => {
+//   s.buy('rate_2217cd1c93e64f6b87f0dccbea43b3a6').then(console.log).catch(console.log);
+// }).catch(console.log);
+
+
+
+//============buy shipment by carrier name/service type============
+// shipment.save().then(buyShipment => {
+//   shipment.buy('USPS', 'First')
+//     .then(console.log).catch(console.log);
 // }).catch(console.log);

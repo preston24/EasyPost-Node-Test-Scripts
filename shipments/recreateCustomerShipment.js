@@ -9,9 +9,11 @@ const api = new Easypost(apiKey);
 
 
 //============= copy shipment JSON from admin and assign it to const ship ===============
-const ship = {}
+const ship = 
 
 
+
+//=========================================================================================================================
 
 delete ship.to_address.id
 delete ship.to_address.mode
@@ -54,26 +56,27 @@ const shipment = new api.Shipment({
     parcel: ship.parcel,
     customs_info: ship.customs_info,
     options: ship.options,
-    carrier_accounts: ['ca_517f8b082f844574b618862913595c22'],
+    carrier_accounts: ['ca_b892e3d3ac674d6e9ae14d074f328663'],
+    // reference: 'blah'
+    // is_return: true
 })
 
-shipment.save().then(console.log).catch(console.log);
+// shipment.save().then(console.log).catch(console.log);
 
 
 //============buy shipment by lowest rate============
-// shipment.save().then(buyShipment => {
-//   shipment.buy(shipment.lowestRate())
-//     .then(console.log).catch(console.log);
-// }).catch(console.log);
+shipment.save().then(buyShipment => {
+  shipment.buy(shipment.lowestRate())
+    .then(console.log).catch(console.log);
+}).catch(console.log);
 
 //============buy shipment by carrier name/service type============
 // shipment.save().then(buyShipment => {
-//   shipment.buy('NextDayAir')
+//   shipment.buy('USPS', 'First')
 //     .then(console.log).catch(console.log);
 // }).catch(console.log);
 
 // ============buy shipment by ID============
-// api.Shipment.retrieve('shp_b8f9c51e58614f3eab2ee6739bc93af7').then(s => {
-//   s.buy('rate_eeb9c4351caa4cb095b42a1e8c1a3302').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_62f98549d87846538d6bdccb16c7e545').then(s => {
+//   s.buy('rate_4c9d8fa4c64f4c9c9bbd964febd19a78').then(console.log).catch(console.log);
 // }).catch(console.log);
-

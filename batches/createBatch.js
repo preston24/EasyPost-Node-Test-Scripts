@@ -3,25 +3,34 @@ require('dotenv').config();
 
 const Easypost = require('@easypost/api');
 const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey
+// const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
+///////////////////////////ADD SHIPMENTS TO A BATCH////////////////////////////////////////////////////////////////
 
-/* Shipments and other batch child objects can either be
-     * an array instances or an array of ids. */
 // batch = new api.Batch({
-//     shipments: ['shp_9b4f1c5803da4684aff4a16ddeb16ba6', 'shp_68b9bd742dda47aeb5f28a9bd457e632'],
+//     shipments: ['shp_c56d0a5e8674438e8de521b3121f7afc', 'shp_12b9b4e0385449739af32fb20e5bea01'],
 // });
 
+// batch.save().then(console.log).catch(console.log);
+
+////////////////////ADD SHIPMENTS TO BATCH USING AN ARRAY OF OBJECTS/////////////////////////////////////////////////
+
 // batch = new api.Batch({
-//     shipments: [{id: 'shp_aba84c98de9d4bd697c582d70a5f8715'}]
+//     shipments: [{id: 'shp_d82d1005ba3a4caea7529d44f99fb0ec'}, {id: 'shp_e9cda3f814ad4120b8cb0274b7e9469b'}]
 //   });
 
 // batch.save().then(console.log).catch(console.log);
 
+///////////////////////////GENERATE BATCH LABEL////////////////////////////////////////////////////////////////////
 
+// api.Batch.retrieve('batch_5c830bca9341410eb080d7c5f3b6cbfe').then(b => {
+//      b.generateLabel('PDF').then(console.log);
+//    });
+   
 
+///////////////////RETRIEVE A BATCH/////////////////////////////////////////////////////////////////////////////////
 
-// api.Batch.retrieve('batch_98d86b62266e46f7b7f5c07c2f66273e').then(b => {
-//   b.createScanForm().then(console.log);
-// });
+// api.Batch.retrieve('batch_5c830bca9341410eb080d7c5f3b6cbfe').then(b => {
+//      b.createScanForm().then(console.log);
+//    });

@@ -8,7 +8,7 @@ const api = new Easypost(apiKey);
 
 
 // ===============Covert label from PNG to ZPL====================
-// api.Shipment.retrieve('shp_cfeb59c6245242f282f3e21960cb040a').then(shipment => {
+// api.Shipment.retrieve('shp_a931b714c2644c79a2216cf8200de743').then(shipment => {
 //     shipment.convertLabelFormat('ZPL').then(console.log);
 //   }).catch(console.log);
 
@@ -21,6 +21,8 @@ const api = new Easypost(apiKey);
 //   scanForm.save().then(console.log).catch(console.log);
 
 
+// api.CarrierType.all().then(r => console.log(JSON.stringify(r))).catch(console.log);
+
 
 
 
@@ -32,7 +34,7 @@ const api = new Easypost(apiKey);
 
 
 
-api.CarrierAccount.retrieve('').then(console.log).catch(console.log);
+// api.CarrierAccount.retrieve('').then(console.log).catch(console.log);
 
 
 // api.CarrierAccount.retrieve('ca_719c4da8af8f45658aedabe96beeb3ff').then((ca) => {
@@ -42,3 +44,5 @@ api.CarrierAccount.retrieve('').then(console.log).catch(console.log);
 
 
   // api.User.retrieve('').then(console.log).catch(console.log);
+
+  // api.User.retrieve('').then(child => console.log(child.api_keys));

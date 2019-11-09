@@ -9,27 +9,28 @@ const api = new Easypost(apiKey);
 
 // set addresses
 const toAddress = new api.Address({
-    name: "The Dude",
-    street1: "45 Morningside Manor",
+    name: "Canadian Tire (E-Commerce)",
+    street1: "1210 STEELES AVENUE EAST",
     street2: "",
-    city: "Airdrie",
-    state: "AB",
-    zip: "T4B0K2",
+    city: "MILTON",
+    state: "ON",
+    zip: "L9T6R1",
     country: "CA",
-    phone: "1234567890",
-    email: "email@email.com",
+    phone: "9058782349",
+    // email: "Orders@Drexel.ca",
 });
 
 const fromAddress = new api.Address({
-    name: "The Dude",
-    street1: "945A SOUTHGATE DR",
+    company: "IMPACT CANOPIES CANADA",
+    name: "SHIPPING DEPT",
+    street1: "1371 KEBET WAY",
     street2: "",
-    city: "GUELPH",
+    city: "Toronto",
     state: "ON",
-    zip: "N1L0B9",
+    zip: "M5G 1X5",
     country: "CA",
-    phone: "1234567890",
-    email: "email@email.com",
+    phone: "6044641371",
+    email: "vanshipping@impactcanopy.com",
 });
 
 
@@ -136,24 +137,24 @@ const order = new api.Order({
     shipments: [
         new api.Shipment({
             parcel: {
-                // weight: 17.5,
-                // width: 8,
-                // height: 3,
-                // length: 10,
-                id: 'prcl_2d79d00b2a0449ee89f5a40b470f7338'
+                weight: 17.5,
+                width: 8,
+                height: 3,
+                length: 10,
+                // id: 'prcl_3ac7a76d57fd4927a2aa5ad75fbc637c'
             },
             // customs_info
         }),
-        new api.Shipment({
-            parcel: {
-                // weight: 17.5,
-                // width: 8,
-                // height: 3,
-                // length: 10,
-                id: 'prcl_3ecf0572c1a64d2e8f7e001fba7b9f69'
-            },
-            // customs_info2
-        }),
+        // new api.Shipment({
+        //     parcel: {
+        //         // weight: 17.5,
+        //         // width: 8,
+        //         // height: 3,
+        //         // length: 10,
+        //         // id: 'prcl_2d79d00b2a0449ee89f5a40b470f7338'
+        //     },
+        //     // customs_info2
+        // }),
         // new api.Shipment({
         //     parcel: {
         //         // weight: 17.5,
@@ -176,9 +177,7 @@ const order = new api.Order({
         // }),
     ],
     // carrier_accounts: [{"id":"ca_e5ecb8da97d643349f1c57ccd143eb91"}, {"id":"ca_b281591570e24e0c961a09901a5c2b57"}],
-    carrier_accounts: [ {"id":"ca_792303b8961b4d3296604c5b3d027cb5"}],
+    carrier_accounts: [ {"id":"ca_62e83d60f01846f2b639b5ffe51b2339"}],
 });
 
 order.save().then(console.log).catch(console.log);
-
-

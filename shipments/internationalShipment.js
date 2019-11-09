@@ -9,15 +9,15 @@ const api = new Easypost(apiKey);
 
 
   const toAddress = new api.Address({
-  // company: '',
-  // name: 'TESTY MCTESTFACE',
-  // street1: '721 Government St',
-  // // street2: '',
-  // city: 'Victoria',
-  // state: 'BC',
-  // zip: 'V8W 1W5',
-  // country: 'CA',
-  // phone: '6135699941',
+  company: 'THE TESTY MCTESTFACE CO.',
+  name: 'MR. TESTY MCTESTFACE',
+  street1: '721 Government St',
+  // street2: '',
+  city: 'Victoria',
+  state: 'BC',
+  zip: 'V8W 1W5',
+  country: 'CA',
+  phone: '6135699941',
 
   // company: "TEST",
   // name: 'TEST',
@@ -30,20 +30,22 @@ const api = new Easypost(apiKey);
   // phone: '4165555556',
   // email: 'TEST123@YOPMAIL.COM',
 
-
-  name: 'test',
-  street1: 'Bleicherstr. 40',
-  street2: '',
-  city: 'Bremen',
-  state: 'HB',
-  zip: '28203',
-  country: 'DE',
-  phone: '1234567989077'
+  
+  // name: "Richard Henderson",
+  // company: "",
+  // street1: "1221 Round Table Dr.",
+  // street2: "",
+  // city: "Dallas",
+  // state: "TX",
+  // zip: "75247",
+  // country: "US",
+  // phone: "12142437617",
+  // email: "hrh@airmail.net",
 });
 
 const fromAddress = new api.Address({
-  // company: "TEST",
-  // name: 'TEST',
+  // company: "THE TESTING CO.",
+  // name: 'MR. TEST',
   // street1: '358 S 700 E',
   // street2: 'STE B',
   // city: 'Salt Lake City',
@@ -54,8 +56,8 @@ const fromAddress = new api.Address({
   // email: 'TEST123@YOPMAIL.COM',
 
 
-  company: '',
-  name: 'Test',
+  company: 'THE TESTING CO.',
+  name: 'MR. TEST',
   street1: '600 University Ave',
   // street2: '',
   city: 'Toronto',
@@ -74,22 +76,22 @@ const customsInfo = new api.CustomsInfo({
     eel_pfc: "NOEEI 30.36",
     customs_certify: true,
     customs_signer: 'TEST',
-    contents_type: 'other',
+    contents_type: 'merchandise',
     restriction_type: 'none',
     restriction_comments: '',
     non_delivery_option: 'return',
-    contents_explanation: 'Stuff',
+    contents_explanation: 'Items bought at auction',
     // declaration: '',
     customs_items: [
         new api.CustomsItem({
-            description: 'Things',
+            description: 'Pair of spelter statues',
             quantity: 1,
-            weight: 100,
+            weight: 10,
             value: 10,
-            hs_tariff_number: '852352',
-            origin_country: 'US',
-            code: 'MPH0213',
-            currency: 'USD'
+            // hs_tariff_number: '852352',
+            origin_country: '',
+            // code: 'MPH0213',
+            currency: 'GBP'
         })],
 });
 
@@ -98,7 +100,7 @@ const parcel = new api.Parcel({
     length: 25,
     width: 19,
     height: 19,
-    weight: 260,
+    weight: 10,
 });
 
 parcel.save().then(console.log).catch(console.log);
@@ -116,11 +118,12 @@ const shipment = new api.Shipment({
     //  delivery_confirmation: 'SIGNATURE',
     //  hold_for_pickup: true,
     //  handling_instructions: 'These are my instructions!!!!!'
+    // print_custom_1: 'heyo'
     },
     carrier_accounts: ['ca_ee4c27915ef845f49f43f9302a7aa21f'],
 });
 
-shipment.save().then(console.log).catch(console.log);
+// shipment.save().then(console.log).catch(console.log);
 
 
 
