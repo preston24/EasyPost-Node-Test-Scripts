@@ -11,8 +11,6 @@ const api = new Easypost(apiKey);
 //============= copy shipment JSON from admin and assign it to const ship ===============
 const ship = 
 
-
-
 //=========================================================================================================================
 
 delete ship.to_address.id
@@ -56,9 +54,9 @@ const shipment = new api.Shipment({
     parcel: ship.parcel,
     customs_info: ship.customs_info,
     options: ship.options,
-    carrier_accounts: ['ca_b892e3d3ac674d6e9ae14d074f328663'],
-    // reference: 'blah'
-    // is_return: true
+    // reference: 'blah',
+    // is_return: true,
+    carrier_accounts: [process.env.UPS],
 })
 
 // shipment.save().then(console.log).catch(console.log);

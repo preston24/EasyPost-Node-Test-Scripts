@@ -2,69 +2,58 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey;
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
 
   const toAddress = new api.Address({
-  company: 'THE TESTY MCTESTFACE CO.',
-  name: 'MR. TESTY MCTESTFACE',
-  street1: '721 Government St',
-  // street2: '',
-  city: 'Victoria',
-  state: 'BC',
-  zip: 'V8W 1W5',
-  country: 'CA',
-  phone: '6135699941',
-
-  // company: "TEST",
-  // name: 'TEST',
-  // street1: '358 S 700 E',
-  // street2: 'STE B',
-  // city: 'Salt Lake City',
-  // state: 'UT',
-  // zip: '84102',
-  // country: 'US',
-  // phone: '4165555556',
-  // email: 'TEST123@YOPMAIL.COM',
+  // company: 'THE TESTY MCTESTFACE CO.',
+  // name: 'MR. TESTY MCTESTFACE',
+  // street1: '721 Government St',
+  // // street2: '',
+  // city: 'Victoria',
+  // state: 'BC',
+  // zip: 'V8W 1W5',
+  // country: 'CA',
+  // phone: '6135699941',
 
   
-  // name: "Richard Henderson",
-  // company: "",
-  // street1: "1221 Round Table Dr.",
-  // street2: "",
-  // city: "Dallas",
-  // state: "TX",
-  // zip: "75247",
-  // country: "US",
-  // phone: "12142437617",
-  // email: "hrh@airmail.net",
+  name: "TESTING",
+  company: "",
+  street1: "150 Kennedy Road",
+  street2: "Flat 25, 12/F, Acacia Building",
+  city: "WAN CHAI",
+  state: "HONG KONG",
+  zip: "75247",
+  country: "HK",
+  phone: "12142437617",
+  email: "hrh@airmail.net",
 });
 
 const fromAddress = new api.Address({
-  // company: "THE TESTING CO.",
-  // name: 'MR. TEST',
-  // street1: '358 S 700 E',
-  // street2: 'STE B',
-  // city: 'Salt Lake City',
-  // state: 'UT',
-  // zip: '84102',
-  // country: 'US',
-  // phone: '4165555556',
-  // email: 'TEST123@YOPMAIL.COM',
-
-
-  company: 'THE TESTING CO.',
+  company: "THE TESTING CO.",
   name: 'MR. TEST',
-  street1: '600 University Ave',
-  // street2: '',
-  city: 'Toronto',
-  state: 'ON',
-  zip: 'M5G 1X5',
-  country: 'CA',
-  phone: '6135699941',
+  street1: '358 S 700 E',
+  street2: 'STE B',
+  city: 'Salt Lake City',
+  state: 'UT',
+  zip: '84102',
+  country: 'US',
+  phone: '4165555556',
+  email: 'TEST123@YOPMAIL.COM',
+
+
+//   company: 'THE TESTING CO.',
+//   name: 'MR. TEST',
+//   street1: '600 University Ave',
+//   // street2: '',
+//   city: 'Toronto',
+//   state: 'ON',
+//   zip: 'M5G 1X5',
+//   country: 'CA',
+//   phone: '6135699941',
 });
 
 
@@ -80,18 +69,18 @@ const customsInfo = new api.CustomsInfo({
     restriction_type: 'none',
     restriction_comments: '',
     non_delivery_option: 'return',
-    contents_explanation: 'Items bought at auction',
+    contents_explanation: 'Stuff',
     // declaration: '',
     customs_items: [
         new api.CustomsItem({
-            description: 'Pair of spelter statues',
+            description: 'Things',
             quantity: 1,
             weight: 10,
             value: 10,
             // hs_tariff_number: '852352',
-            origin_country: '',
+            origin_country: 'US',
             // code: 'MPH0213',
-            currency: 'GBP'
+            currency: 'USD'
         })],
 });
 
@@ -119,8 +108,11 @@ const shipment = new api.Shipment({
     //  hold_for_pickup: true,
     //  handling_instructions: 'These are my instructions!!!!!'
     // print_custom_1: 'heyo'
+    suppress_etd: true,
+    // commercial_invoice_letterhead: 'IMAGE_1',
+    // commercial_invoice_signature: 'IMAGE_2'
     },
-    carrier_accounts: ['ca_ee4c27915ef845f49f43f9302a7aa21f'],
+    carrier_accounts: [process.env.FedEx],
 });
 
 // shipment.save().then(console.log).catch(console.log);

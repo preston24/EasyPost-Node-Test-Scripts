@@ -52,7 +52,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -64,7 +65,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -76,7 +78,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -88,7 +91,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -100,7 +104,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -112,7 +117,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -124,7 +130,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -136,7 +143,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -148,7 +156,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -160,7 +169,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -172,7 +182,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -184,7 +195,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -196,7 +208,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -208,7 +221,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -220,7 +234,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"                  
+               },
         }),
         new api.Shipment({
             parcel: {
@@ -232,7 +247,8 @@ const order = new api.Order({
             options: {
                 //    label_format: "PDF",
                 label_size: "4X6",
-                delivery_confirmation: "SIGNATURE"                  },
+                delivery_confirmation: "SIGNATURE"
+               },
         }),
         new api.Shipment({
             parcel: {

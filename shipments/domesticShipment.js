@@ -2,34 +2,35 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey;
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
 const toAddress = new api.Address({
-  verify: ['delivery'],
-  company: 'Stark Tower',
-  name: 'Tony Stark',
-  street1: '200 Park Ave',
-  // street2: '',
-  city: 'New York',
-  state: 'NY',
-  zip: '10079',
-  country: 'US',
-  phone: '8012220000',
-  email: 'email@email.com',
+  // verify: ['delivery', 'zip4'],
+  verify: ['zip4'],
+  // company: 'Stark Tower',
+  // name: 'Tony Stark',
+  // street1: '200 Park Ave',
+  // // street2: '',
+  // city: 'New York',
+  // state: 'NY',
+  // zip: '10079',
+  // country: 'US',
+  // phone: '8012220000',
+  // email: 'email@email.com',
 
   // company: "The UPS Store",
-  // name: 'John Smith',
-  // street1: '358 S 700 E',
-  // street2: 'STE B',
-  // city: 'Salt Lake City',
-  // state: 'UT',
-  // zip: '84102',
-  // country: 'US',
-  // phone: '4165555556',
-  // email: 'TEST123@YOPMAIL.COM',
+  name: 'John Smith',
+  street1: '43300 LITTLE RIVER AIRPORT RD',
+  street2: 'SPACE 57',
+  city: 'LITTLE RIVER',
+  state: 'CA',
+  zip: '95456',
+  country: 'US',
+  phone: '4165555556',
+  email: 'TEST123@YOPMAIL.COM',
 });
 
 const fromAddress = new api.Address({
@@ -83,7 +84,7 @@ const shipment = new api.Shipment({
   from_address: fromAddress,
   parcel: parcel,
   // carrier: 'UPS',
-  reference: '1234',
+  // reference: '1234',
   // is_return: true,
     options: {
       // label_date: '2019-08-27',
@@ -111,9 +112,9 @@ const shipment = new api.Shipment({
       // delivery_min_datetime: '2019-07-18T07:00:00.000Z',
       // delivery_max_datetime: '2019-07-22T07:00:00.000Z',
       // handling_instructions: 'LEAVE AT DOOR'
-      cost_center: 'howdy'
+      // cost_center: 'howdy'
     },
-    carrier_accounts: ['ca_b892e3d3ac674d6e9ae14d074f328663']
+    carrier_accounts: [process.env.FedEx]
 });
 
 
@@ -122,10 +123,10 @@ const shipment = new api.Shipment({
 
 
 //============buy shipment by lowest rate============
-// shipment.save().then(buyShipment => {
-//   shipment.buy(shipment.lowestRate())
-//     .then(console.log).catch(console.log);
-// }).catch(console.log);
+shipment.save().then(buyShipment => {
+  shipment.buy(shipment.lowestRate())
+    .then(console.log).catch(console.log);
+}).catch(console.log);
 
 
 
