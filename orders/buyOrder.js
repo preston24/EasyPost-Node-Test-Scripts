@@ -9,13 +9,12 @@ const api = new Easypost(apiKey);
 
 
 
-api.Order.retrieve('order_b9f359b444824f24b471eee6385a2109').then(order => {
-    order.buy('Purolator', 'PurolatorGround').then(console.log).catch(console.log)
+api.Order.retrieve('order_ca0aeec2bd094968aac0c509e17e31dd').then(order => {
+    order.buy('CanadaPost', 'Xpresspost').then(console.log).catch(console.log)
 }).catch(console.log);
 
 
-// api.Order.retrieve('order_e6ad30342de44796bee2a4295e40d915').then(o => console.log(o)).catch(console.log);
-
+// api.Order.retrieve('order_0e0fded9ef7d42cfb101c12076f769f7').then(console.log).catch(o => console.log(JSON.stringify(o)));
 
 
 

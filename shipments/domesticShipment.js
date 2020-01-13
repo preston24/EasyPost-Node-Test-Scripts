@@ -2,35 +2,24 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-// const apiKey = process.env.testKey;
-const apiKey = process.env.prodKey;
+const apiKey = process.env.testKey;
+// const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
 const toAddress = new api.Address({
-  // verify: ['delivery', 'zip4'],
-  verify: ['zip4'],
-  // company: 'Stark Tower',
-  // name: 'Tony Stark',
-  // street1: '200 Park Ave',
-  // // street2: '',
-  // city: 'New York',
-  // state: 'NY',
-  // zip: '10079',
-  // country: 'US',
-  // phone: '8012220000',
-  // email: 'email@email.com',
-
-  // company: "The UPS Store",
-  name: 'John Smith',
-  street1: '43300 LITTLE RIVER AIRPORT RD',
-  street2: 'SPACE 57',
-  city: 'LITTLE RIVER',
-  state: 'CA',
-  zip: '95456',
+  verify: ['delivery'],
+  // verify: ['zip4'],
+  company: 'Stark Tower',
+  name: 'Tony Stark',
+  street1: '200 Park Ave',
+  // street2: '',
+  city: 'New York',
+  state: 'NY',
+  zip: '10079',
   country: 'US',
-  phone: '4165555556',
-  email: 'TEST123@YOPMAIL.COM',
+  phone: '8012220000',
+  email: 'email@email.com',
 });
 
 const fromAddress = new api.Address({
@@ -68,7 +57,7 @@ toAddress.save().then(console.log).catch(console.log);
 // toAddress.save().then(r => console.log(JSON.stringify(r))).catch(console.log);
 
 const parcel = new api.Parcel({
-  // predefined_package: 'Parcel',
+  // predefined_package: 'Letter',
   length: 10,
   width: 10,
   height: 10,
@@ -112,21 +101,26 @@ const shipment = new api.Shipment({
       // delivery_min_datetime: '2019-07-18T07:00:00.000Z',
       // delivery_max_datetime: '2019-07-22T07:00:00.000Z',
       // handling_instructions: 'LEAVE AT DOOR'
-      // cost_center: 'howdy'
+      // cost_center: 'EASYPOST'
+      // payment: {
+      //   type: 'SENDER',
+      //   account: '12345',
+      //   postal_code: '84102'
+      // }
     },
-    carrier_accounts: [process.env.FedEx]
+    carrier_accounts: ['ca_b892e3d3ac674d6e9ae14d074f328663']
 });
 
 
-// shipment.save().then(console.log).catch(console.log);
+shipment.save().then(console.log).catch(console.log);
 
 
 
 //============buy shipment by lowest rate============
-shipment.save().then(buyShipment => {
-  shipment.buy(shipment.lowestRate())
-    .then(console.log).catch(console.log);
-}).catch(console.log);
+// shipment.save().then(buyShipment => {
+//   shipment.buy(shipment.lowestRate())
+//     .then(console.log).catch(console.log);
+// }).catch(console.log);
 
 
 

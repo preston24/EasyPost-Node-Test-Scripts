@@ -22,15 +22,15 @@ const api = new Easypost(apiKey);
 //     phone: '5481855189',
 // });
 
-const address = 'adr_7ba4ea6e8ff848eabddcd923a784da8c'
-const shipment = 'shp_6f2c57c17e184e6bbe61b3b49c8c9d39';
+const address = 'adr_e4b71a2292994099acc238b9f5245943'
+const shipment = 'shp_0cd355b06749452a84103bc51e9bbe3d';
 
 const pickup = new api.Pickup({
     address,
     shipment,
     reference: 'my-first-pickup',
-    min_datetime: '2019-08-08 09:00:00',
-    max_datetime: '2019-08-08 17:00:00',
+    min_datetime: '2020-01-10 09:00:00',
+    max_datetime: '2020-01-10 17:00:00',
     is_account_address: false,
     instructions: 'Special pickup instructions',
 });

@@ -21,20 +21,12 @@ const api = new Easypost(apiKey);
 //   scanForm.save().then(console.log).catch(console.log);
 
 
-// api.CarrierType.all().then(r => console.log(JSON.stringify(r))).catch(console.log);
-
-
-
 
 // const user = new api.User({
 //   name: 'Test Child',
 // })
 
 // user.save().then(u => console.log(u.id));
-
-
-
-// api.CarrierAccount.retrieve('').then(console.log).catch(console.log);
 
 
 // api.CarrierAccount.retrieve('ca_719c4da8af8f45658aedabe96beeb3ff').then((ca) => {

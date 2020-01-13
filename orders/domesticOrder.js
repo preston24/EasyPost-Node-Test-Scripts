@@ -46,7 +46,6 @@ const order = new api.Order({
                 width: 8,
                 height: 3,
                 length: 10,
-                // id: 'prcl_3ac7a76d57fd4927a2aa5ad75fbc637c'
             },
         }),
         new api.Shipment({
@@ -55,7 +54,6 @@ const order = new api.Order({
                 width: 8,
                 height: 3,
                 length: 10,
-                // id: 'prcl_2d79d00b2a0449ee89f5a40b470f7338'
             },
         }),
         new api.Shipment({
@@ -64,7 +62,6 @@ const order = new api.Order({
                 width: 8,
                 height: 3,
                 length: 10,
-                // id: 'prcl_25ac1d6f51a9433fa831005dc7091eab'
             },
         }),
         new api.Shipment({
@@ -73,7 +70,6 @@ const order = new api.Order({
                 width: 8,
                 height: 3,
                 length: 10,
-                // id: 'prcl_86b7cb54192a4bc380a3af9f44116e83'
             },
         }),
     ],

@@ -2,34 +2,34 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-// const apiKey = process.env.testKey;
-const apiKey = process.env.prodKey;
+const apiKey = process.env.testKey;
+// const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
 
   const toAddress = new api.Address({
-  // company: 'THE TESTY MCTESTFACE CO.',
-  // name: 'MR. TESTY MCTESTFACE',
-  // street1: '721 Government St',
-  // // street2: '',
-  // city: 'Victoria',
-  // state: 'BC',
-  // zip: 'V8W 1W5',
-  // country: 'CA',
-  // phone: '6135699941',
+  company: 'THE TESTY MCTESTFACE CO.',
+  name: 'MR. TESTY MCTESTFACE',
+  street1: '721 Government St',
+  // street2: '',
+  city: 'Victoria',
+  state: 'BC',
+  zip: 'V8W 1W5',
+  country: 'CA',
+  phone: '6135699941',
 
   
-  name: "TESTING",
-  company: "",
-  street1: "150 Kennedy Road",
-  street2: "Flat 25, 12/F, Acacia Building",
-  city: "WAN CHAI",
-  state: "HONG KONG",
-  zip: "75247",
-  country: "HK",
-  phone: "12142437617",
-  email: "hrh@airmail.net",
+  // name: "TESTING",
+  // company: "",
+  // street1: "150 Kennedy Road",
+  // street2: "Flat 25, 12/F, Acacia Building",
+  // city: "WAN CHAI",
+  // state: "HONG KONG",
+  // zip: "75247",
+  // country: "HK",
+  // phone: "12142437617",
+  // email: "hrh@airmail.net",
 });
 
 const fromAddress = new api.Address({
@@ -45,15 +45,15 @@ const fromAddress = new api.Address({
   email: 'TEST123@YOPMAIL.COM',
 
 
-//   company: 'THE TESTING CO.',
-//   name: 'MR. TEST',
-//   street1: '600 University Ave',
-//   // street2: '',
-//   city: 'Toronto',
-//   state: 'ON',
-//   zip: 'M5G 1X5',
-//   country: 'CA',
-//   phone: '6135699941',
+  // company: 'THE TESTING CO.',
+  // name: 'MR. TEST',
+  // street1: '600 University Ave',
+  // // street2: '',
+  // city: 'Toronto',
+  // state: 'ON',
+  // zip: 'M5G 1X5',
+  // country: 'CA',
+  // phone: '6135699941',
 });
 
 
@@ -77,7 +77,7 @@ const customsInfo = new api.CustomsInfo({
             quantity: 1,
             weight: 10,
             value: 10,
-            // hs_tariff_number: '852352',
+            hs_tariff_number: '852352',
             origin_country: 'US',
             // code: 'MPH0213',
             currency: 'USD'
@@ -85,10 +85,10 @@ const customsInfo = new api.CustomsInfo({
 });
 
 const parcel = new api.Parcel({
-    // predefined_package: 'UPS10kgBox',
-    length: 25,
-    width: 19,
-    height: 19,
+    predefined_package: 'Document',
+    // length: 25,
+    // width: 19,
+    // height: 19,
     weight: 10,
 });
 
@@ -108,14 +108,14 @@ const shipment = new api.Shipment({
     //  hold_for_pickup: true,
     //  handling_instructions: 'These are my instructions!!!!!'
     // print_custom_1: 'heyo'
-    suppress_etd: true,
     // commercial_invoice_letterhead: 'IMAGE_1',
     // commercial_invoice_signature: 'IMAGE_2'
+    // delivery_confirmation: 'DO_NOT_SAFE_DROP'
     },
-    carrier_accounts: [process.env.FedEx],
+    carrier_accounts: ['ca_73e8527659224c7c9981784bf7ec6b5f'],
 });
 
-// shipment.save().then(console.log).catch(console.log);
+shipment.save().then(console.log).catch(console.log);
 
 
 
@@ -126,7 +126,9 @@ const shipment = new api.Shipment({
 
 
 // ============buy shipment by lowest rate============
-shipment.save().then(buyShipment => {
-  shipment.buy(shipment.lowestRate())
-    .then(console.log).catch(console.log);
-}).catch(console.log);
+// shipment.save().then(buyShipment => {
+//   shipment.buy(shipment.lowestRate())
+//     .then(console.log).catch(console.log);
+// }).catch(console.log);
+
+
