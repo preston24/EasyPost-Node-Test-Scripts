@@ -9,7 +9,7 @@ const api = new Easypost(apiKey);
 
 const toAddress = new api.Address({
   verify: ['delivery'],
-  // verify: ['zip4'],
+  // // verify: ['zip4'],
   company: 'Stark Tower',
   name: 'Tony Stark',
   street1: '200 Park Ave',
@@ -20,10 +20,23 @@ const toAddress = new api.Address({
   country: 'US',
   phone: '8012220000',
   email: 'email@email.com',
+
+
+
+
+  // name: 'Test',
+  // street1: '108 S. Jackson St.',
+  // street2: '',
+  // city: 'Auburn',
+  // state: 'IN',
+  // zip: '46706',
+  // country: 'US',
+  // phone: '4165555556',
+  // email: 'TEST123@YOPMAIL.COM',
 });
 
 const fromAddress = new api.Address({
-  company: "The UPS Store",
+  company: "StoreMcStoreFace",
   name: 'John Smith',
   street1: '358 S 700 E',
   street2: 'STE B',
@@ -61,7 +74,7 @@ const parcel = new api.Parcel({
   length: 10,
   width: 10,
   height: 10,
-  weight: 2.4,
+  weight: 10,
 });
 
 
@@ -76,14 +89,16 @@ const shipment = new api.Shipment({
   // reference: '1234',
   // is_return: true,
     options: {
+      // hazmat: 'LIMITED_QUANTITY',
+      // additional_handling: true,
       // label_date: '2019-08-27',
       // endorsement: 'RETURN_SERVICE_REQUESTED'
-      // label_format: 'PDF',
+      label_format: 'PDF',
       // hold_for_pickup: true,
       // label_size: '4x6',
       // postage_label_inline: true,
       // additional_handling: true,
-      // delivery_confirmation: 'ADULT_SIGNATURE_RESTRICTED',
+      // delivery_confirmation: 'NO_SIGNATURE',
       // registered_mail: true,
       // return_receipt: true,
       // alcohol: true,
@@ -108,7 +123,7 @@ const shipment = new api.Shipment({
       //   postal_code: '84102'
       // }
     },
-    carrier_accounts: ['ca_b892e3d3ac674d6e9ae14d074f328663']
+    carrier_accounts: ['ca_24bc0be091514b41b2c31f59808d4ede']
 });
 
 
@@ -136,3 +151,4 @@ shipment.save().then(console.log).catch(console.log);
 //   shipment.buy('USPS', 'First')
 //     .then(console.log).catch(console.log);
 // }).catch(console.log);
+

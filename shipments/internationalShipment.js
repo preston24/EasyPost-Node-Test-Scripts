@@ -112,7 +112,7 @@ const shipment = new api.Shipment({
     // commercial_invoice_signature: 'IMAGE_2'
     // delivery_confirmation: 'DO_NOT_SAFE_DROP'
     },
-    carrier_accounts: ['ca_73e8527659224c7c9981784bf7ec6b5f'],
+    carrier_accounts: ['ca_24bc0be091514b41b2c31f59808d4ede'],
 });
 
 shipment.save().then(console.log).catch(console.log);
@@ -130,5 +130,3 @@ shipment.save().then(console.log).catch(console.log);
 //   shipment.buy(shipment.lowestRate())
 //     .then(console.log).catch(console.log);
 // }).catch(console.log);
-
-

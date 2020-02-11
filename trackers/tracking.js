@@ -8,11 +8,11 @@ const api = new Easypost(apiKey);
 
 
 
-// const trackArray = ['EZ1000000001', 'EZ4000000004', 'EZ7000000007']
+const trackArray = ['EZ1000000001', 'EZ4000000002', 'EZ7000000003', 'EZ7000000004', 'EZ7000000005', 'EZ7000000006', 'EZ7000000007']
 
 const tracker1 = new api.Tracker({
-  // tracking_code: trackArray[0],
-  tracking_code: '61290988154027851575',
+  // tracking_code: trackArray[1],
+  tracking_code: '779947613756',
   carrier: 'FedEx'
 });
 

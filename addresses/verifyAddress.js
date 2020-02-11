@@ -10,15 +10,18 @@ const verifiableAddress = new api.Address({
     verify_strict: ['delivery'],
     company: '',
     name: 'Test',
-    street1: '2119 E 93rd Street',
-    street2: 'L15',
-    city: 'Cleveland',
-    state: 'OH',
-    zip: '44106',
-    country: 'US',
+    street1: '2 rue des fleurs',
+    // street2: 'Tower # 14-07/12"',
+    city: 'Regina',
+    state: 'SK',
+    zip: 'G3H 2H7',
+    country: 'CA',
     // phone: '18669476872',
     // email: ''
   });
   
 
-verifiableAddress.save().then(console.log).catch(r => console.log(JSON.stringify(r)));
+// verifiableAddress.save().then(console.log).catch(r => console.log(JSON.stringify(r)));
+
+
+verifiableAddress.save().then(r => {console.log(JSON.stringify(r))}).catch(console.log);

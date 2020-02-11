@@ -38,3 +38,6 @@ const api = new Easypost(apiKey);
   // api.User.retrieve('').then(console.log).catch(console.log);
 
   // api.User.retrieve('').then(child => console.log(child.api_keys));
+
+
+  api.CarrierType.all().then(console.log);
