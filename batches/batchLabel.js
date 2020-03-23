@@ -7,6 +7,6 @@ const apiKey = process.env.testKey;
 const api = new Easypost(apiKey);
 
 
-const batch = api.Batch.retrieve('').then(b => {
-    b.generateLabel('ZPL').then(console.log).catch(err => console.log(err));
+const batch = api.Batch.retrieve('batch_205681c0e91542b598de466351d9677b').then(b => {
+    b.generateLabel('PDF').then(console.log).catch(err => console.log(err));
 }).catch(err => console.log(err));

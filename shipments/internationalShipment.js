@@ -9,27 +9,41 @@ const api = new Easypost(apiKey);
 
 
   const toAddress = new api.Address({
-  company: 'THE TESTY MCTESTFACE CO.',
-  name: 'MR. TESTY MCTESTFACE',
-  street1: '721 Government St',
-  // street2: '',
-  city: 'Victoria',
-  state: 'BC',
-  zip: 'V8W 1W5',
-  country: 'CA',
-  phone: '6135699941',
+  // company: 'THE TESTY MCTESTFACE CO.',
+  // name: 'MR. TESTY MCTESTFACE',
+  // street1: '721 Government St',
+  // // street2: '',
+  // city: 'Victoria',
+  // state: 'BC',
+  // zip: 'V8W 1W5',
+  // country: 'CA',
+  // phone: '6135699941',
+
+
+
+
+  company: "Ainsley Gornall",
+  name: "Ainsley Gornall",
+  street1: "210 - 2255 W 1st ave",
+  street2: "STEPHEN DON'T SHIP",
+  city: "Vancouver",
+  state: "BC",
+  zip: "V6K1E9",
+  country: "CA",
+  phone: "4388888888",
+  email: "tracking@returnmagic.com",
 
   
-  // name: "TESTING",
-  // company: "",
-  // street1: "150 Kennedy Road",
-  // street2: "Flat 25, 12/F, Acacia Building",
-  // city: "WAN CHAI",
-  // state: "HONG KONG",
-  // zip: "75247",
-  // country: "HK",
-  // phone: "12142437617",
-  // email: "hrh@airmail.net",
+  // company: "THE TESTING CO.",
+  // name: 'MR. TEST',
+  // street1: '358 S 700 E',
+  // street2: 'STE B',
+  // city: 'Salt Lake City',
+  // state: 'UT',
+  // zip: '84102',
+  // country: 'US',
+  // phone: '4165555556',
+  // email: 'TEST123@YOPMAIL.COM',
 });
 
 const fromAddress = new api.Address({
@@ -45,15 +59,29 @@ const fromAddress = new api.Address({
   email: 'TEST123@YOPMAIL.COM',
 
 
-  // company: 'THE TESTING CO.',
-  // name: 'MR. TEST',
-  // street1: '600 University Ave',
+
+
+  // company: 'Londre Bodywear CO Hannah Todd',
+  // name: 'Londre Bodywear CO Hannah Todd',
+  // street1: '711 Broughton st',
   // // street2: '',
-  // city: 'Toronto',
-  // state: 'ON',
-  // zip: 'M5G 1X5',
+  // city: 'Vancouver',
+  // state: 'BC',
+  // zip: 'V6G 1Z8',
   // country: 'CA',
-  // phone: '6135699941',
+  // phone: '6043534440',
+  // email: 'tracking@returnmagic.com'
+
+
+  // // company: 'THE TESTING CO.',
+  // // name: 'MR. TEST',
+  // street1: '13820 NE Airport Way',
+  // // street2: '',
+  // city: 'Portland',
+  // state: 'OR',
+  // zip: '97251',
+  // country: 'US',
+  // // phone: '6135699941',
 });
 
 
@@ -62,9 +90,9 @@ fromAddress.save().then(console.log).catch(console.log);
 toAddress.save().then(console.log).catch(console.log);
 
 const customsInfo = new api.CustomsInfo({
-    eel_pfc: "NOEEI 30.36",
+    // eel_pfc: "NOEEI 30.36",
     customs_certify: true,
-    customs_signer: 'TEST',
+    customs_signer: 'Sample',
     contents_type: 'merchandise',
     restriction_type: 'none',
     restriction_comments: '',
@@ -73,22 +101,22 @@ const customsInfo = new api.CustomsInfo({
     // declaration: '',
     customs_items: [
         new api.CustomsItem({
-            description: 'Things',
+            description: 'Sample good',
             quantity: 1,
-            weight: 10,
-            value: 10,
-            hs_tariff_number: '852352',
+            weight: 9,
+            value: 1.0,
+            hs_tariff_number: '4901.99',
             origin_country: 'US',
             // code: 'MPH0213',
-            currency: 'USD'
+            // currency: 'USD'
         })],
 });
 
 const parcel = new api.Parcel({
-    predefined_package: 'Document',
-    // length: 25,
-    // width: 19,
-    // height: 19,
+    // predefined_package: 'Document',
+    length: 10,
+    width: 10,
+    height: 10,
     weight: 10,
 });
 
@@ -99,23 +127,24 @@ const shipment = new api.Shipment({
     from_address: fromAddress,
     parcel: parcel,
     customs_info: customsInfo,
-    // is_return: true,
+    reference: '123',
     options: {
       // bill_third_party_account: '12345'
-    //  incoterm: 'DAP',
+    //  incoterm: 'DDP',
+    // label_size: '4X6',
     //  label_format: "PDF",
     //  delivery_confirmation: 'SIGNATURE',
     //  hold_for_pickup: true,
     //  handling_instructions: 'These are my instructions!!!!!'
-    // print_custom_1: 'heyo'
+    print_custom_1: 'HEY THIS SHOULD BE ON THE LABEL'
     // commercial_invoice_letterhead: 'IMAGE_1',
     // commercial_invoice_signature: 'IMAGE_2'
     // delivery_confirmation: 'DO_NOT_SAFE_DROP'
     },
-    carrier_accounts: ['ca_24bc0be091514b41b2c31f59808d4ede'],
+    carrier_accounts: ['ca_b892e3d3ac674d6e9ae14d074f328663'],
 });
 
-shipment.save().then(console.log).catch(console.log);
+// shipment.save().then(console.log).catch(console.log);
 
 
 
@@ -126,7 +155,7 @@ shipment.save().then(console.log).catch(console.log);
 
 
 // ============buy shipment by lowest rate============
-// shipment.save().then(buyShipment => {
-//   shipment.buy(shipment.lowestRate())
-//     .then(console.log).catch(console.log);
-// }).catch(console.log);
+shipment.save().then(buyShipment => {
+  shipment.buy(shipment.lowestRate())
+    .then(console.log).catch(console.log);
+}).catch(console.log);

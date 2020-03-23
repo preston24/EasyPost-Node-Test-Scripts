@@ -10,29 +10,29 @@ const api = new Easypost(apiKey);
 const toAddress = new api.Address({
   verify: ['delivery'],
   // // verify: ['zip4'],
-  company: 'Stark Tower',
-  name: 'Tony Stark',
-  street1: '200 Park Ave',
-  // street2: '',
-  city: 'New York',
-  state: 'NY',
-  zip: '10079',
-  country: 'US',
-  phone: '8012220000',
-  email: 'email@email.com',
-
-
-
-
-  // name: 'Test',
-  // street1: '108 S. Jackson St.',
-  // street2: '',
-  // city: 'Auburn',
-  // state: 'IN',
-  // zip: '46706',
+  // company: 'Stark Tower',
+  // name: 'Tony Stark',
+  // street1: '200 Park Ave',
+  // // street2: '',
+  // city: 'New York',
+  // state: 'NY',
+  // zip: '10079',
   // country: 'US',
-  // phone: '4165555556',
-  // email: 'TEST123@YOPMAIL.COM',
+  // phone: '8012220000',
+  // email: 'email@email.com',
+
+
+
+
+  name: 'Generic Estimate',
+  street1: '1300 clay st suite 162B',
+  street2: '',
+  city: 'Oakland',
+  state: 'CA',
+  zip: '94162',
+  country: 'US',
+  phone: '4165555556',
+  email: 'TEST123@YOPMAIL.COM',
 });
 
 const fromAddress = new api.Address({
@@ -65,7 +65,7 @@ fromAddress.save().then(console.log).catch(console.log);
 
 toAddress.save().then(console.log).catch(console.log);
 
-// This one shows errors
+// These will break out the errors
 // fromAddress.save().then(r => console.log(JSON.stringify(r))).catch(console.log);
 // toAddress.save().then(r => console.log(JSON.stringify(r))).catch(console.log);
 
@@ -87,6 +87,7 @@ const shipment = new api.Shipment({
   parcel: parcel,
   // carrier: 'UPS',
   // reference: '1234',
+  // service: 'Ground',
   // is_return: true,
     options: {
       // hazmat: 'LIMITED_QUANTITY',
@@ -120,22 +121,23 @@ const shipment = new api.Shipment({
       // payment: {
       //   type: 'SENDER',
       //   account: '12345',
-      //   postal_code: '84102'
+      //   postal_code: '84102',
+      //   country: 'US'
       // }
     },
-    carrier_accounts: ['ca_24bc0be091514b41b2c31f59808d4ede']
+    carrier_accounts: [process.env.USPS]
 });
 
 
-shipment.save().then(console.log).catch(console.log);
+// shipment.save().then(console.log).catch(console.log);
 
 
 
 //============buy shipment by lowest rate============
-// shipment.save().then(buyShipment => {
-//   shipment.buy(shipment.lowestRate())
-//     .then(console.log).catch(console.log);
-// }).catch(console.log);
+shipment.save().then(buyShipment => {
+  shipment.buy(shipment.lowestRate())
+    .then(console.log).catch(console.log);
+}).catch(console.log);
 
 
 
@@ -152,3 +154,19 @@ shipment.save().then(console.log).catch(console.log);
 //     .then(console.log).catch(console.log);
 // }).catch(console.log);
 
+
+
+
+
+
+
+
+// const shipment = new api.Shipment({
+//   to_address: toAddress,
+//   from_address: fromAddress,
+//   parcel: parcel,
+//     options: {
+//       label_format: 'ZPL',
+//     },
+//     carrier_accounts: [process.env.USPS]
+// });

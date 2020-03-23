@@ -22,17 +22,17 @@ const api = new Easypost(apiKey);
 //     phone: '5481855189',
 // });
 
-const address = 'adr_89f8854819d148c68c6b4a43aa1f5c5d'
-const shipment = 'shp_79b14f66644b418cbf742d6705b3c569';
+const address = 'adr_08e7222b72a246dca163874ad4d3dc05'
+const shipment = 'shp_30a0a590c9ea41779fba6970c4107242';
 
 const pickup = new api.Pickup({
     address,
     shipment,
     reference: 'my-first-pickup',
-    min_datetime: '2020-02-10 09:00:00',
-    max_datetime: '2020-02-10 17:00:00',
+    min_datetime: '2020-02-26 13:00:00',
+    max_datetime: '2020-02-26 16:00:00',
     is_account_address: false,
-    instructions: 'Special pickup instructions',
+    instructions: 'Do a backflip when you arrive to pick up',
 });
 
 pickup.save().then(console.log).catch(console.log);

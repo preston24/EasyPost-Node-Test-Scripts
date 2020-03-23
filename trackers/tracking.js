@@ -12,8 +12,8 @@ const trackArray = ['EZ1000000001', 'EZ4000000002', 'EZ7000000003', 'EZ700000000
 
 const tracker1 = new api.Tracker({
   // tracking_code: trackArray[1],
-  tracking_code: '779947613756',
-  carrier: 'FedEx'
+  tracking_code: '332180859503',
+  carrier: 'Purolator'
 });
 
 
