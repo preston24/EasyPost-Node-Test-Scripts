@@ -311,7 +311,7 @@ const order = new api.Order({
         //           },
         // }),
     ],
-    carrier_accounts: [ {"id":"ca_09df5bb08bab4da3aeb7b26ce6a79a1d"}],
+    carrier_accounts: [{"id":"ca_09df5bb08bab4da3aeb7b26ce6a79a1d"}],
 });
 
 order.save().then(console.log).catch(console.log);

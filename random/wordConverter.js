@@ -1,14 +1,15 @@
-let words = "so do i Eric";
+let words = "";
 words = words.replace(/[.,\/#!$%\^&\*;:{}=\-_`'~()]/g,"")
 
-function emotify(){
+function emotify() {
   let w = words.split("");
-  for(i=0;i<w.length;i++){
-    if(w[i] !== " "){
-    w[i] = ":cs-"+w[i]+":"
-  }else{
-    w[i] = ":cs-s-sp:"
-  }
+
+  for(i = 0; i < w.length; i++) {
+    if(w[i] !== " ") {
+      w[i] = ":cs-"+w[i]+":"
+    } else {
+      w[i] = ":cs-s-sp:"
+    }
   }
   console.log(w.join(""));
 }

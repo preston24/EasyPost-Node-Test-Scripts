@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey;
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
@@ -86,7 +86,7 @@ const shipment = new api.Shipment({
   from_address: fromAddress,
   parcel: parcel,
   // carrier: 'UPS',
-  // reference: '1234',
+  reference: '1234',
   // service: 'Ground',
   // is_return: true,
     options: {
@@ -94,7 +94,7 @@ const shipment = new api.Shipment({
       // additional_handling: true,
       // label_date: '2019-08-27',
       // endorsement: 'RETURN_SERVICE_REQUESTED'
-      label_format: 'PDF',
+      // label_format: 'PDF',
       // hold_for_pickup: true,
       // label_size: '4x6',
       // postage_label_inline: true,
@@ -125,7 +125,7 @@ const shipment = new api.Shipment({
       //   country: 'US'
       // }
     },
-    carrier_accounts: [process.env.USPS]
+    carrier_accounts: ['ca_9f4f30602705495a975b28b4daf5c8f2']
 });
 
 
@@ -168,5 +168,4 @@ shipment.save().then(buyShipment => {
 //     options: {
 //       label_format: 'ZPL',
 //     },
-//     carrier_accounts: [process.env.USPS]
 // });
