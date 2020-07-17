@@ -18,7 +18,7 @@ delete ship.to_address.id
 delete ship.to_address.mode
 delete ship.to_address.updated_at
 delete ship.to_address.created_at
-delete ship.to_address.carrier_facility
+// delete ship.to_address.carrier_facility
 delete ship.from_address.id
 delete ship.from_address.created_at
 delete ship.from_address.mode
@@ -56,20 +56,20 @@ const shipment = new api.Shipment({
     parcel: ship.parcel,
     customs_info: ship.customs_info,
     options: ship.options,
-    // reference: 'blah',
+    // reference: 'UPSMI Rates Test',
     // is_return: true,
-    carrier_accounts: ['ca_f3660edb7394441398d86244c5843c65'],
-    // service: 'globalvalue'
+    // service: 'globalvalue',
+    carrier_accounts: [process.env.eComm],
 })
 
-shipment.save().then(console.log).catch(console.log);
+// shipment.save().then(console.log).catch(console.log);
 
 
 //============buy shipment by lowest rate============
-// shipment.save().then(buyShipment => {
-//   shipment.buy(shipment.lowestRate())
-//     .then(console.log).catch(console.log);
-// }).catch(console.log);
+shipment.save().then(buyShipment => {
+  shipment.buy(shipment.lowestRate())
+    .then(console.log).catch(console.log);
+}).catch(console.log);
 
 //============buy shipment by carrier name/service type============
 // shipment.save().then(buyShipment => {
@@ -78,9 +78,6 @@ shipment.save().then(console.log).catch(console.log);
 // }).catch(console.log);
 
 // ============buy shipment by ID============
-// api.Shipment.retrieve('shp_7874d286135d4e60ae32438367f0a524').then(s => {
-//   s.buy('rate_23dad4dac5244b06839ac58dd1c116a0').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_6c2920321c454b35a8afb8b565b04e52').then(s => {
+//   s.buy('rate_2cde635a0a524c00a32b5007821ea422').then(console.log).catch(console.log);
 // }).catch(console.log);
-
-
-

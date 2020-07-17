@@ -8,16 +8,16 @@ const api = new Easypost(apiKey);
 
 const verifiableAddress = new api.Address({
     verify_strict: ['delivery'],
-    // company: '',
-    name: 'ANNA MELNICHUK',
-    street1: 'Profsoyuznaya Ulitsa 104 345',
-    // street2: 'Tower # 14-07/12"',
-    city: 'MOSCOW',
-    state: 'KK',
-    zip: '117437',
-    country: 'RU',
-    // phone: '18669476872',
-    // email: ''
+    company: 'Elite Ink Printing',
+    // name: 'Test Name',
+    street1: '21185 North Brady Street',
+    // street2: 'CO BLU618035-BEH-AC',5034 S 153RD STOmaha NE 68137
+    city: 'Davenport',
+    state: 'IA',
+    zip: '52806',
+    country: 'US',
+    phone: '5634245161',
+    email: 'eliteinkprinting@gmail.com'
   });
   
 

@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey;
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
@@ -20,16 +20,14 @@ const api = new Easypost(apiKey);
   // phone: '6135699941',
 
 
-
-
-  company: "Ainsley Gornall",
-  name: "Ainsley Gornall",
-  street1: "210 - 2255 W 1st ave",
-  street2: "STEPHEN DON'T SHIP",
-  city: "Vancouver",
-  state: "BC",
-  zip: "V6K1E9",
-  country: "CA",
+  company: "Apotheke am Neumarkt",
+  name: "Bob Evaluator",
+  street1: "Neumarkt 2",
+  // street2: "STEPHEN DON'T SHIP",
+  city: "Koeln",
+  // state: "BC",
+  zip: "50667",
+  country: "DE",
   phone: "4388888888",
   email: "tracking@returnmagic.com",
 
@@ -47,16 +45,26 @@ const api = new Easypost(apiKey);
 });
 
 const fromAddress = new api.Address({
-  company: "THE TESTING CO.",
-  name: 'MR. TEST',
-  street1: '358 S 700 E',
-  street2: 'STE B',
-  city: 'Salt Lake City',
-  state: 'UT',
-  zip: '84102',
-  country: 'US',
-  phone: '4165555556',
-  email: 'TEST123@YOPMAIL.COM',
+  // company: "THE TESTING CO.",
+  // name: 'MR. TEST',
+  // street1: '358 S 700 E',
+  // street2: 'STE B',
+  // city: 'Salt Lake City',
+  // state: 'UT',
+  // zip: '84102',
+  // country: 'US',
+  // phone: '4165555556',
+  // email: 'TEST123@YOPMAIL.COM',
+
+  // name: 'Sydney',
+  // street1: '117 Macquarie St.',
+  // street2: '6',
+  // city: 'NSW',
+  // state: 'Sydney',
+  // zip: '2000',
+  // country: 'AU',
+  // phone: '612925309000',
+  // email: 'TEST123@YOPMAIL.COM',
 
 
 
@@ -73,15 +81,17 @@ const fromAddress = new api.Address({
   // email: 'tracking@returnmagic.com'
 
 
-  // // company: 'THE TESTING CO.',
-  // // name: 'MR. TEST',
-  // street1: '13820 NE Airport Way',
-  // // street2: '',
-  // city: 'Portland',
-  // state: 'OR',
-  // zip: '97251',
-  // country: 'US',
-  // // phone: '6135699941',
+  company: 'FakePost',
+  name: 'MR. Fake',
+  street1: '1912 Woodford Rd',
+  street2: '',
+  city: 'Vienna',
+  state: 'VA',
+  zip: '22182',
+  country: 'US',
+  phone: '5555555555',
+  email: 'support@example.com',
+  residential: false
 });
 
 
@@ -107,7 +117,7 @@ const customsInfo = new api.CustomsInfo({
             value: 1.0,
             hs_tariff_number: '4901.99',
             origin_country: 'US',
-            // code: 'MPH0213',
+            code: 'MPH0213',
             // currency: 'USD'
         })],
 });
@@ -127,21 +137,29 @@ const shipment = new api.Shipment({
     from_address: fromAddress,
     parcel: parcel,
     customs_info: customsInfo,
-    reference: '123',
+    // reference: '123',
     options: {
-      // bill_third_party_account: '12345'
-    //  incoterm: 'DDP',
+      importer_address_id: 'adr_5919faf95aec43d4949215d07f913e16',
+      // bill_third_party_account: '12345',
+     incoterm: 'DDU',
     // label_size: '4X6',
     //  label_format: "PDF",
     //  delivery_confirmation: 'SIGNATURE',
     //  hold_for_pickup: true,
-    //  handling_instructions: 'These are my instructions!!!!!'
-    print_custom_1: 'HEY THIS SHOULD BE ON THE LABEL'
+    //  handling_instructions: 'These are my instructions!!!!!',
+    // print_custom_1: 'HEY THIS SHOULD BE ON THE LABEL',
     // commercial_invoice_letterhead: 'IMAGE_1',
     // commercial_invoice_signature: 'IMAGE_2'
-    // delivery_confirmation: 'DO_NOT_SAFE_DROP'
+    // delivery_confirmation: 'DO_NOT_SAFE_DROP',
+    // currency: 'CAD',
+    // payment: {
+    //   type: 'RECEIVER',
+    //   account: '893084290',
+    //   postal_code: '84102',
+    //   country: 'US'
+    //  },
     },
-    carrier_accounts: ['ca_b892e3d3ac674d6e9ae14d074f328663'],
+    carrier_accounts: [process.env.UPS],
 });
 
 // shipment.save().then(console.log).catch(console.log);

@@ -39,6 +39,8 @@ const fromAddress = new api.Address({
 const order = new api.Order({
     to_address: toAddress,
     from_address: fromAddress,
+    // service: 'Priority',
+    // carrier: 'USPS',
     shipments: [
         new api.Shipment({
             parcel: {
@@ -74,7 +76,7 @@ const order = new api.Order({
         }),
     ],
     // carrier_accounts: [{"id":"ca_e5ecb8da97d643349f1c57ccd143eb91"}, {"id":"ca_b281591570e24e0c961a09901a5c2b57"}],
-    carrier_accounts: [ {"id":"ca_bb4b66b0ff1d4784abe63c81dce69ef7"}],
+    carrier_accounts: [ {"id":"ca_b281591570e24e0c961a09901a5c2b57"}],
 });
 
 order.save().then(console.log).catch(console.log);

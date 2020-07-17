@@ -9,8 +9,8 @@ const api = new Easypost(apiKey);
 
 
 
-api.Order.retrieve('order_ca0aeec2bd094968aac0c509e17e31dd').then(order => {
-    order.buy('CanadaPost', 'Xpresspost').then(console.log).catch(console.log)
+api.Order.retrieve('order_4da8b9de0c79452798a6512d069efa12').then(order => {
+    order.buy('UPS', 'Ground').then(console.log).catch(console.log)
 }).catch(console.log);
 
 
