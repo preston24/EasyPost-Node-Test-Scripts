@@ -8,7 +8,7 @@ const api = new Easypost(apiKey);
 
 
 const scanForm = new api.ScanForm({
-  shipments: ['shp_9363548906464fb1bdacbb2aa185fe21']
+  shipments: ['shp_803c5998aadb46ad9169f82e5addf3c2']
 });
 
 scanForm.save().then(console.log).catch(console.log);

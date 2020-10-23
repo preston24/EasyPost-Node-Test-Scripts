@@ -12,8 +12,8 @@ const api = new Easypost(apiKey);
 
 const tracker1 = new api.Tracker({
   // tracking_code: trackArray[1],
-  tracking_code: '9405536897846802576109',
-  carrier: 'USPS'
+  tracking_code: 'PBIT5722671001',
+  carrier: 'Parcelforce'
 });
 
 
@@ -22,5 +22,4 @@ tracker1.save().then(console.log).catch(console.log);
 
 //This will log everything, meaning the "tracking_location: [Object]" will be unpacked.
 // tracker1.save().then(r => {console.log(JSON.stringify(r))}).catch(console.log);
-
 

@@ -2,17 +2,17 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey;
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 ///////////////////////////ADD SHIPMENTS TO A BATCH////////////////////////////////////////////////////////////////
 
-batch = new api.Batch({
-    shipments: ['shp_224619e370cb482c84c9e94c91a8f75e'],
-});
+// batch = new api.Batch({
+//     shipments: ['shp_fce862db1c05497eb25d5aa048fe55a7'],
+// });
 
-batch.save().then(console.log).catch(console.log);
+// batch.save().then(console.log).catch(console.log);
 
 ////////////////////ADD SHIPMENTS TO BATCH USING AN ARRAY OF OBJECTS/////////////////////////////////////////////////
 
@@ -25,6 +25,6 @@ batch.save().then(console.log).catch(console.log);
 
 ///////////////////RETRIEVE A BATCH AND SCANFORM/////////////////////////////////////////////////////////////////////////////////
 
-// api.Batch.retrieve('batch_360ad1aba25841388107393bdf3c8e0a').then(b => {
-//      b.createScanForm().then(console.log);
-//    });
+api.Batch.retrieve('batch_1cac849a160a4d0fb7cd3e3ceb2fc1dd').then(b => {
+     b.createScanForm().then(console.log);
+   });

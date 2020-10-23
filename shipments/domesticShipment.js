@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey;
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
@@ -70,10 +70,10 @@ const fromAddress = new api.Address({
 // toAddress.save().then(r => console.log(JSON.stringify(r))).catch(console.log);
 
 const parcel = new api.Parcel({
-  predefined_package: 'Letter',
-  // length: 5.0,
-  // width: 4.0,
-  // height: 3.0,
+  // predefined_package: 'Flat',
+  length: 5.0,
+  width: 4.0,
+  height: 3.0,
   weight: 0.5,
 });
 
@@ -86,16 +86,16 @@ const shipment = new api.Shipment({
   to_address: toAddress,
   from_address: fromAddress,
   parcel: parcel,
-  // carrier: 'UPS',
-  // service: 'SingleReturn',
-  // reference: '1234',
+  // carrier: 'USPS',
+  // service: 'Priority',
+  // reference: 'TESTINGSIG',
   // is_return: true,
     options: {
       // hazmat: 'LIMITED_QUANTITY',
       // additional_handling: true,
       // label_date: '2020-05-29',
       // endorsement: 'RETURN_SERVICE_REQUESTED'
-      print_custom_1: 'TESTING!!!!!!',
+      // print_custom_1: 'TESTING!!!!!!',
       // label_format: 'PDF',
       // delivery_confirmation: 'SIGNATURE',
       // pickup_min_datetime: '2020-05-18T07:00:00.000Z',
@@ -112,13 +112,35 @@ const shipment = new api.Shipment({
       //   country: 'US'
       // }
     },
-    carrier_accounts: [process.env.USPS]
+    carrier_accounts: [process.env.UPS]
 });
 
 
-// shipment.save().then(r => {console.log(JSON.stringify('usps_zone:' + r.usps_zone))}).catch(console.log);
-// shipment.save().then(zone => {
-//   console.log(zone.usps_zone);
+
+// shipment.save().then(s => {
+//   console.log(s.rates)
+// }).catch(console.log);
+
+
+// shipment.save().then(s => {
+//   s.rates.forEach(x => {
+//     const theGoods = x.service + " " + "$" + x.rate
+//     console.log(theGoods);
+//   }) 
+// }).catch(console.log);
+
+// shipment.save().then(s => {
+//   for(i = 0; i < s.rates.length; i++) {
+//     console.log(s.rates[i].service + " " + "$" + s.rates[i].rate)
+//   }
+// })
+
+
+// shipment.save().then(s => {
+//   console.log(s.rates[0].service);
+//   console.log(s.rates[0].carrier);
+//   console.log(s.rates[0].rate);
+//   console.log(s.rates[0].delivery_days);
 // }).catch(console.log);
 
 // shipment.save().then(console.log).catch(console.log);
@@ -143,48 +165,3 @@ shipment.save().then(buyShipment => {
 //   shipment.buy('USPS', 'First')
 //     .then(console.log).catch(console.log);
 // }).catch(console.log);
-
-
-
-
-
-
-// const shipment = new api.Shipment({
-//   to_address: toAddress,
-//   from_address: fromAddress,
-//   parcel: parcel,
-// });
-
-
-
-// const shipment = new api.Shipment({
-//   to_address: toAddress,
-//   from_address: fromAddress,
-//   parcel: parcel,
-//     options: {
-//       incoterm: 'DDU',
-//       importer_address_id: 'adr_********************************'
-//     },
-// });
-
-
-
-
-
-// const shipment = new api.Shipment({
-//   to_address: toAddress,
-//   from_address: fromAddress,
-//   parcel: parcel,
-//   reference: '1234',
-//     options: {
-      payment: {
-        // type: 'THIRD_PARTY',
-        // account: '12345',
-        // postal_code: '84102',
-        // country: 'US'
-      }
-//     },
-//     carrier_accounts: [process.env.FedEx]
-// });
-
-

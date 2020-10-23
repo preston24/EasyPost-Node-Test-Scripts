@@ -9,6 +9,7 @@ const api = new Easypost(apiKey);
 
 // set addresses
 const toAddress = new api.Address({
+  verify: ['delivery'],
   company: 'Stark Tower',
   name: 'Tony Stark',
   street1: '200 Park Ave',

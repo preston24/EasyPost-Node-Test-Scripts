@@ -9,7 +9,9 @@ const api = new Easypost(apiKey);
 
 
 //============= copy shipment JSON from admin and assign it to const ship ===============
+
 const ship = 
+
 //=========================================================================================================================
 
 
@@ -18,7 +20,7 @@ delete ship.to_address.id
 delete ship.to_address.mode
 delete ship.to_address.updated_at
 delete ship.to_address.created_at
-// delete ship.to_address.carrier_facility
+delete ship.to_address.carrier_facility
 delete ship.from_address.id
 delete ship.from_address.created_at
 delete ship.from_address.mode
@@ -56,20 +58,25 @@ const shipment = new api.Shipment({
     parcel: ship.parcel,
     customs_info: ship.customs_info,
     options: ship.options,
-    // reference: 'UPSMI Rates Test',
+    // reference: 'UPSMI GU Address Test',
     // is_return: true,
-    // service: 'globalvalue',
-    carrier_accounts: [process.env.eComm],
+    // service: 'Ground',
+    carrier_accounts: [process.env.FEDEX],
+    // carrier_accounts: ['ca_6542437f42534b8fa49e07f65d8806a7'],
 })
 
 // shipment.save().then(console.log).catch(console.log);
 
+shipment.save().then(s => {
+  console.log(s.rates)
+}).catch(console.log);
+
 
 //============buy shipment by lowest rate============
-shipment.save().then(buyShipment => {
-  shipment.buy(shipment.lowestRate())
-    .then(console.log).catch(console.log);
-}).catch(console.log);
+// shipment.save().then(buyShipment => {
+//   shipment.buy(shipment.lowestRate())
+//     .then(console.log).catch(console.log);
+// }).catch(console.log);
 
 //============buy shipment by carrier name/service type============
 // shipment.save().then(buyShipment => {
@@ -78,6 +85,6 @@ shipment.save().then(buyShipment => {
 // }).catch(console.log);
 
 // ============buy shipment by ID============
-// api.Shipment.retrieve('shp_6c2920321c454b35a8afb8b565b04e52').then(s => {
-//   s.buy('rate_2cde635a0a524c00a32b5007821ea422').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_74186b66c64c457f91267338fdec2454').then(s => {
+//   s.buy('rate_283ed58972be4bd6a01e19a3fd110e08').then(console.log).catch(console.log);
 // }).catch(console.log);
