@@ -7,9 +7,9 @@ const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 const report = new api.Report({
-  type: 'cash_flow',
-  start_date: '2020-08-01',
-  end_date: '2020-08-21',
+  type: 'tracker',
+  start_date: '2020-10-01',
+  end_date: '2020-10-15',
   regenerate: true
 });
 

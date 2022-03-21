@@ -12,7 +12,7 @@ const api = new Easypost(apiKey);
 //WARINGING this will refund/void all production labels in "pre_transit" or "unknown" status after the start date
 api.Shipment.all({
     page_size: 100,
-    start_datetime: '2020-09-01', // should be less than 30 days.
+    start_datetime: '2021-02-16', // should be less than 30 days.
 }).then(s => {
     //if we don't find any shipments to refund then this variable will remain false
     let found = false;
@@ -29,4 +29,4 @@ api.Shipment.all({
     if (!found) {
         console.log("No shipments to refund");
     }
-});
+}).catch(console.log);

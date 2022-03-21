@@ -8,6 +8,6 @@ const api = new Easypost(apiKey);
 
 
 // ===============Covert label from PNG to ZPL====================
-api.Shipment.retrieve('').then(shipment => {
+api.Shipment.retrieve('shp_b3f855bd749643aab4f504f36b01a3d6').then(shipment => {
     shipment.convertLabelFormat('ZPL').then(console.log);
   }).catch(console.log);

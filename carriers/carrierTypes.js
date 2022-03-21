@@ -13,7 +13,7 @@ const api = new Easypost(apiKey);
 
 api.CarrierType.all().then((r) => {
   for (i = 0; i < r.length; i++) {
-    if (r[i].type == "DHLGMIAccount") {
+    if (r[i].type == "DhlExpressAccount") {
       console.log(JSON.stringify(r[i]));
     }
   }

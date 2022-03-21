@@ -2,8 +2,12 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-// const apiKey = process.env.testKey;
-const apiKey = process.env.prodKey;
+// const apiKey = process.env.personalTestKey
+// const apiKey = process.env.personalProdKey
+
+
+const apiKey = process.env.testKey;
+// const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
@@ -30,6 +34,11 @@ delete ship.parcel.created_at
 delete ship.parcel.mode
 delete ship.parcel.updated_at
 
+// delete ship.return_address.id
+// delete ship.return_address.created_at
+// delete ship.return_address.mode
+// delete ship.return_address.updated_at
+
 if (ship.parcel.predefined_package === null) {
   delete ship.parcel.predefined_package
 };
@@ -55,36 +64,40 @@ for (i = 0; i < ship.customs_info.customs_items.length; i++) {
 const shipment = new api.Shipment({
     to_address: ship.to_address,
     from_address: ship.from_address,
+    // return_address: ship.return_address,
     parcel: ship.parcel,
     customs_info: ship.customs_info,
     options: ship.options,
-    // reference: 'UPSMI GU Address Test',
+    reference: 'Testing',
     // is_return: true,
-    // service: 'Ground',
-    carrier_accounts: [process.env.FEDEX],
-    // carrier_accounts: ['ca_6542437f42534b8fa49e07f65d8806a7'],
+    // service: 'ExpressEasyNonDoc',
+    // carrier_accounts: [process.env.UPS],
+    carrier_accounts: ['ca_7e670d6620c5402c954e31585d18027c'],
 })
 
 // shipment.save().then(console.log).catch(console.log);
 
-shipment.save().then(s => {
-  console.log(s.rates)
-}).catch(console.log);
+// shipment.save().then(s => {
+//   console.log(s.rates)
+//   console.log(s.messages);
+//   console.log(s.id);
+//   console.log(s.usps_zone);
+//   console.log(s.postage_label); // for one-call buys
+// }).catch(console.log);
 
 
 //============buy shipment by lowest rate============
-// shipment.save().then(buyShipment => {
-//   shipment.buy(shipment.lowestRate())
-//     .then(console.log).catch(console.log);
-// }).catch(console.log);
+shipment.save().then(s => {
+  s.buy(s.lowestRate()).then(console.log).catch(console.log);
+ }).catch(console.log);
 
 //============buy shipment by carrier name/service type============
 // shipment.save().then(buyShipment => {
-//   shipment.buy('USPS', 'Priority')
+//   shipment.buy('FedEx', 'INTERNATIONAL_PRIORITY')
 //     .then(console.log).catch(console.log);
 // }).catch(console.log);
 
 // ============buy shipment by ID============
-// api.Shipment.retrieve('shp_74186b66c64c457f91267338fdec2454').then(s => {
-//   s.buy('rate_283ed58972be4bd6a01e19a3fd110e08').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_b5ec94762ff547db9b429b01e51ae3d0').then(s => {
+//   s.buy('rate_a8279fd72e604d34a55eec1d7f54b5d6').then(console.log).catch(console.log);
 // }).catch(console.log);

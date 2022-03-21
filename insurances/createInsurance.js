@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-// const apiKey = process.env.testKey;
-const apiKey = process.env.prodKey;
+const apiKey = process.env.testKey;
+// const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
@@ -25,6 +25,6 @@ const api = new Easypost(apiKey);
 // insurance.save().then(console.log).catch(console.log);
 
 
-api.Shipment.retrieve('shp_10465be9fa8248d6b4c3c747dca36610').then(s => {
-    s.insure(300).then(() => console.log(s)).catch(console.log);
-  }).catch(console.log);
+// api.Shipment.retrieve('shp_10465be9fa8248d6b4c3c747dca36610').then(s => {
+//     s.insure(300).then(() => console.log(s)).catch(console.log);
+//   }).catch(console.log);

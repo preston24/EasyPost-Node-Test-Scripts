@@ -12,6 +12,11 @@ const api = new Easypost(apiKey);
 // api.Pickup.retrieve('pickup_').then(console.log);
 
 // retrieve and buy pickup
-api.Pickup.retrieve('pickup_ec0a5fa811a1426a859a57557e92e9c7').then(p => {
-    p.buy('FedEx', 'Future-day Express Pickup').then(console.log).catch(console.log);
-  }).catch(console.log);
+// api.Pickup.retrieve('pickup_04bbd273a33840fda6a76768749140ad').then(p => {
+//     p.buy('FedEx', 'Future-day Ground Pickup').then(console.log).catch(console.log);
+//   }).catch(console.log);
+
+
+  api.Pickup.retrieve('pickup_04bbd273a33840fda6a76768749140ad').then(p => {
+    p.cancel().catch(console.error);
+  });

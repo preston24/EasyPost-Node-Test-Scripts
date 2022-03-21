@@ -9,16 +9,16 @@ const api = new Easypost(apiKey);
 
 
 const toAddress = new api.Address({
-    verify: ['delivery'],
+    verify: ['delivery', 'zip4'],
     company: 'EasyPost',
     name: 'Mr. EP',
-    street1: '345 California St',
-    street2: 'FL 10',
-    city: 'San Francisco',
-    state: 'CA',
-    zip: '94104',
+    street1: '401 Independence Rd',
+    // street2: 'FL 10',
+    city: 'Florence',
+    state: 'NJ',
+    zip: '08518-2200',
     country: 'US',
-    phone: '8012220000',
+    // phone: '8012220000',
 });
 
 toAddress.save().then(console.log).catch(console.log);
@@ -48,7 +48,7 @@ const fromAddress = new api.Address({
     //  email: 'email@email.com',
   });
 
-  fromAddress.save().then(console.log).catch(console.log);
+//   fromAddress.save().then(console.log).catch(console.log);
 
 
 
