@@ -4,6 +4,9 @@ require('dotenv').config();
 const Easypost = require('@easypost/api');
 const apiKey = process.env.testKey;
 // const apiKey = process.env.prodKey;
+
+// const apiKey = process.env.personalTestKey;
+
 const api = new Easypost(apiKey);
 
 
@@ -13,7 +16,7 @@ const data = (
   // ENTER JSON DATA BELOW
   //===============================================================//
 
-  {}
+{}
 
   //===============================================================//
 );
@@ -82,8 +85,11 @@ const order = new api.Order({
   shipments: data.shipments,
   options: data.options,
   carrier_accounts: [{ id: process.env.UPS}],
-  // carrier_accounts: [ {"id":"ca_c37dd0aa979646ad9b5e113a4743e61a"}]
+  // carrier_accounts: [ {"id":"ca_2e6e73b519ec487688e7cd20fbb9351e"}]
 });
 
 // Print the results to console
-order.save().then(console.log).catch(e => {console.log(JSON.stringify(e))});
+order.save().then(o => {
+  console.log(o.rates);
+  console.log(o.id);
+}).catch(e => {console.log(JSON.stringify(e))});

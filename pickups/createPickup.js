@@ -10,9 +10,6 @@ const api = new Easypost(apiKey);
 
 
 
-/* Either objects or ids can be passed in for addresses and
- * shipments. If the object does not have an id, it will be
- * created. */
 // const address = new api.Address({
 //     name: 'EasyPost',
 //     street1: 'Ferris Dr 6410',

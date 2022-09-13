@@ -34,18 +34,6 @@ const fromAddress = new api.Address({
     country: 'US',
     phone: '4165555556',
     email: 'TEST123@YOPMAIL.COM',
-  
-  
-    //  company: 'EasyPost',
-    //  name: 'Mr. EP',
-    //  street1: '345 California St',
-    //  street2: 'FL 10',
-    //  city: 'San Francisco',
-    //  state: 'CA',
-    //  zip: '94104',
-    //  country: 'US',
-    //  phone: '8012220000',
-    //  email: 'email@email.com',
   });
 
 //   fromAddress.save().then(console.log).catch(console.log);

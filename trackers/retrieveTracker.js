@@ -8,6 +8,9 @@ const api = new Easypost(apiKey);
 
 
 
-api.Shipment.retrieve('shp_f30ed38c076844dab7cc49d280001f57').then(s => {
-    s.refund(console.log(s)).then(console.log).catch(console.log);
+// api.Tracker.retrieve('').then(console.log);
+
+
+api.Tracker.retrieve('trk_d735dcf663484fed95cc1fee6caa7bb9').then(t => {
+    console.log(JSON.stringify(t))
 }).catch(console.log);

@@ -7,10 +7,10 @@ const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 const report = new api.Report({
-  type: 'tracker',
-  start_date: '2020-10-01',
-  end_date: '2020-10-15',
-  regenerate: true
+  type: 'shipment',
+  start_date: '2022-07-01',
+  end_date: '2022-07-31',
+  send_email: true
 });
 
 report.save().catch(console.log).then(console.log);

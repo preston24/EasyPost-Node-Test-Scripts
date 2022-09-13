@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-// const apiKey = process.env.testKey;
-const apiKey = process.env.prodKey;
+const apiKey = process.env.testKey;
+// const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
@@ -59,26 +59,26 @@ const order = new api.Order({
                 length: 13.83,
             },
         }),
-        // new api.Shipment({
-        //     parcel: {
-        //         weight: 17.5,
-        //         width: 8,
-        //         height: 3,
-        //         length: 10,
-        //     },
-        // }),
-        // new api.Shipment({
-        //     parcel: {
-        //         weight: 17.5,
-        //         width: 8,
-        //         height: 3,
-        //         length: 10,
-        //     },
-        // }),
+        new api.Shipment({
+            parcel: {
+                weight: 17.5,
+                width: 8,
+                height: 3,
+                length: 10,
+            },
+        }),
+        new api.Shipment({
+            parcel: {
+                weight: 17.5,
+                width: 8,
+                height: 3,
+                length: 10,
+            },
+        }),
     ],
     // carrier_accounts: [{"id":"ca_e5ecb8da97d643349f1c57ccd143eb91"}, {"id":"ca_b281591570e24e0c961a09901a5c2b57"}],
-    // carrier_accounts: [ {"id":"ca_b281591570e24e0c961a09901a5c2b57"}],
-    carrier_accounts: [{ id: process.env.USPS }],
+    // carrier_accounts: [ {"id":"ca_df03ec256385433aa343858de35adca8"}],
+    carrier_accounts: [{ id: process.env.UPS }],
 });
 
 order.save().then(console.log).catch(console.log);

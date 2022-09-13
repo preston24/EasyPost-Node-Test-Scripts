@@ -9,15 +9,35 @@ const api = new Easypost(apiKey);
 
 
   const toAddress = new api.Address({
-  company: 'THE TESTY MCTESTFACE CO.',
-  name: 'MR. TESTY MCTESTFACE',
-  street1: '721 Government St',
-  // street2: '',
-  city: 'Victoria',
-  state: 'BC',
-  zip: 'V8W 1W5',
-  country: 'CA',
-  phone: '6135699941',
+  // company: 'THE TEST MCTESTFACE CO.',
+  // name: 'MR. TEST MCTESTFACE',
+  // street1: '721 Government St',
+  // // street2: '',
+  // city: 'Victoria',
+  // state: 'BC',
+  // zip: 'V8W 1W5',
+  // country: 'CA',
+  // phone: '6135699941',
+ 
+
+  // company: 'McDonalds',
+  // street1: ' 600 George St',
+  // city: 'Sydney',
+  // state: 'NSW',
+  // zip: '2000',
+  // country: 'AU',
+  // phone: '+61292641661',
+  // email: 'email@email.com'
+
+
+  company: 'McDonalds',
+  street1: '357 Av. de la Constitución',
+  city: 'San Juan',
+  state: 'PR',
+  zip: '00918',
+  country: 'PR',
+  phone: '+61292641661',
+  email: 'email@email.com'
   
   // name: 'Monica Gustafson',
   // street1: 'Unit 8000 Box 5091',
@@ -41,16 +61,37 @@ const fromAddress = new api.Address({
   phone: '4165555556',
   email: 'TEST123@YOPMAIL.COM',
 
-  company: 'THE TESTY MCTESTFACE CO.',
-  name: 'MR. TESTY MCTESTFACE',
-  street1: '721 Government St',
-  // street2: '',
-  city: 'Victoria',
-  state: 'BC',
-  zip: 'V8W 1W5',
-  country: 'CA',
-  phone: '6135699941',
+  // company: 'EasyPost',
+  // name: 'Mr. EP',
+  // street1: '345 California St',
+  // street2: 'FL 10',
+  // city: 'San Francisco',
+  // state: 'CA',
+  // zip: '94104',
+  // country: 'US',
+  // phone: '8012220000',
+  // email: 'email@email.com',
+  // carrier_facility: 'SFO'
+
+  // company: 'THE TESTY MCTESTFACE CO.',
+  // name: 'MR. TESTY MCTESTFACE',
+  // street1: '721 Government St',
+  // // street2: '',
+  // city: 'Victoria',
+  // state: 'BC',
+  // zip: 'V8W 1W5',
+  // country: 'CA',
+  // phone: '6135699941',
   // residential: false
+
+  company: 'McDonalds',
+  street1: ' 600 George St',
+  city: 'Sydney',
+  state: 'NSW',
+  zip: '2000',
+  country: 'AU',
+  phone: '+61292641661',
+  email: 'email@email.com'
 });
 
 
@@ -62,9 +103,9 @@ const customsInfo = new api.CustomsInfo({
     eel_pfc: "NOEEI 30.37(a)",
     customs_certify: true,
     customs_signer: 'The Man',
-    contents_type: 'other',
+    contents_type: 'merchandise',
     restriction_type: 'none',
-    restriction_comments: 'Tesing UPS stuff and things',
+    // restriction_comments: '',
     // non_delivery_option: 'return',
     contents_explanation: 'Some stuff',
     declaration: 'I do declare',
@@ -73,30 +114,30 @@ const customsInfo = new api.CustomsInfo({
             description: 'Sample good',
             quantity: 1,
             weight: 9,
-            value: 25.,
-            hs_tariff_number: '4901.99',
+            value: 25,
+            // hs_tariff_number: '4901.99',
             origin_country: 'US',
-            code: 'MPH0213',
-            // currency: 'USD'
+            // code: 'MPH0213',
+            currency: 'USD'
         }),
 
-  //     new api.CustomsItem({
-  //       description: 'Notecard_12019_Cadolia',
-  //       quantity: 280,
-  //       weight:0.06,
-  //       value: 1.0,
-  //       origin_country: 'US',
-  //       code: 'Notecard_12019',
-  //   }),
+      new api.CustomsItem({
+        description: 'Notecard_12019_Cadolia',
+        quantity: 1,
+        weight:0.06,
+        value: 1.0,
+        origin_country: 'US',
+        // code: 'Notecard_12019',
+    }),
 
-  //   new api.CustomsItem({
-  //     description: 'Cadolia_Labels',
-  //     quantity: 240,
-  //     weight: 0.06,
-  //     value: 1.0,
-  //     origin_country: 'US',
-  //     code: 'MPH0213',
-  // }),
+    new api.CustomsItem({
+      description: 'Cadolia_Labels',
+      quantity: 1,
+      weight: 0.06,
+      value: 1.0,
+      origin_country: 'US',
+      // code: 'MPH0213',
+  }),
       ],
 });
 
@@ -123,9 +164,9 @@ const shipment = new api.Shipment({
     //     issuing_country: "US"
     //   },
     // ],
-    // reference: '123',
+    // reference: 'Testing UPS MI Label Sizes',
     // is_return: true,
-    // service: 'DHLPacketPlusInternational',
+    // service: 'ExpressWorldwideNonDoc',
     options: {
     //  importer_address_id: 'adr_5919faf95aec43d4949215d07f913e16',
     //  bill_third_party_account: '12345',
@@ -136,8 +177,10 @@ const shipment = new api.Shipment({
     //  commercial_invoice_format: 'PNG',
     //  freight_charge: 56.72,
     //  label_size: '4X6',
-    //  label_format: "PDF",
+    //  label_format: "PNG",
+    carrier_insurance_amount: "550"
     //  delivery_confirmation: 'SIGNATURE',
+    // suppress_etd: true
     //  hold_for_pickup: true,
     //  handling_instructions: 'These are my instructions!!!!!',
     //  print_custom_1: 'HEY THIS SHOULD BE ON THE LABEL',
@@ -158,18 +201,18 @@ const shipment = new api.Shipment({
     //    country: 'US'
     //  },
     },
-    // carrier_accounts: ['ca_c37dd0aa979646ad9b5e113a4743e61a'],
-    carrier_accounts: [process.env.UPS],
+    // carrier_accounts: ['ca_c94828304bdd4a4789268954764e485d'],
+    carrier_accounts: [process.env.DHLEXPRESS],
 });
 
 //SOME VARIOUS WAYS TO RETURN RESPONSE BODY INFO I'VE PLAYED AROUND WITH
 
-shipment.save().then(s => {
-  console.log(s.rates)
-  console.log(s.messages)
-  console.log(s.id);
-  // console.log(s.postage_label); // for one-call buys
-}).catch(console.log);
+// shipment.save().then(s => {
+//   console.log(s.rates)
+//   console.log(s.messages)
+//   console.log(s.id);
+//   // console.log(s.postage_label); // for one-call buys
+// }).catch(console.log);
 
 
 // shipment.save().then(s => {
@@ -201,6 +244,7 @@ shipment.save().then(s => {
 
 
 
+
 // ============buy shipment by ID============
 // api.Shipment.retrieve('shp_9687957fb3934de283c9dc447ca576c7').then(s => {
 //   s.buy('rate_7c6eda5da6be40dda5abe0c7a8c2371b').then(console.log).catch(console.log);
@@ -208,6 +252,6 @@ shipment.save().then(s => {
 
 
 // ============buy shipment by lowest rate============
-// shipment.save().then(s => {
-//   s.buy(s.lowestRate()).then(console.log).catch(console.log);
-//  }).catch(console.log);
+shipment.save().then(s => {
+  s.buy(s.lowestRate()).then(console.log).catch(console.log);
+ });
