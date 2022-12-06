@@ -39,6 +39,11 @@ delete ship.return_address.created_at
 delete ship.return_address.mode
 delete ship.return_address.updated_at
 
+delete ship.buyer_address.id
+delete ship.buyer_address.created_at
+delete ship.buyer_address.mode
+delete ship.buyer_address.updated_at
+
 if (ship.parcel.predefined_package === null) {
   delete ship.parcel.predefined_package
 };
@@ -56,6 +61,14 @@ for (i = 0; i < ship.customs_info.customs_items.length; i++) {
   if(ship.customs_info.customs_items[i].currency === null) {
     delete ship.customs_info.customs_items[i].currency
   }
+
+// Convert customs_items values from strings to numbers to get around prop type differences
+// This is required for the EasyPost Node lib v5+
+  if(ship.customs_info.customs_items[i].value) {
+    ship.customs_info.customs_items[i].value = Number (
+      ship.customs_info.customs_items[i].value
+    );
+  }
  }
 }
 
@@ -64,34 +77,35 @@ for (i = 0; i < ship.customs_info.customs_items.length; i++) {
 const shipment = new api.Shipment({
     to_address: ship.to_address,
     from_address: ship.from_address,
-    return_address: ship.return_address,
+    // return_address: ship.return_address,
+    // buyer_address: ship.buyer_address,
     parcel: ship.parcel,
     customs_info: ship.customs_info,
     options: ship.options,
-    // reference: 'Testing UPS MI Label Sizes',
+    // reference: 'Testing UPS MI Commercial Invoice',
     // is_return: true,
-    // service: 'express48large',
-    // carrier_accounts: [process.env.USPS],
-    carrier_accounts: ['ca_42aacf9b4fd0470b9a03d9b483a2323a'],
+    // service: 'First',
+    carrier_accounts: [process.env.DHLEXPRESS],
+    // carrier_accounts: ['ca_567e54c5a6ef4900b7b8459be42e401b'],
 });
 
 // shipment.save().then(console.log).catch(console.log);
 
-shipment.save().then(s => {
-  console.log(s.rates)
-  console.log(s.messages);
-  console.log(s.id);
-  console.log(s.usps_zone);
-  // console.log(s.postage_label); // for one-call buys
-}).catch(console.log);
+// shipment.save().then(s => {
+//   console.log(s.rates)
+//   console.log(s.messages);
+//   console.log(s.id);
+//   console.log(s.usps_zone);
+//   // console.log(s.postage_label); // for one-call buys
+// }).catch(console.log);
 
 
 
 
 //============buy shipment by lowest rate============
-// shipment.save().then(s => {
-//   s.buy(s.lowestRate()).then(console.log).catch(console.log);
-//  }).catch(console.log);
+shipment.save().then(s => {
+  s.buy(s.lowestRate()).then(console.log).catch(console.log);
+ }).catch(console.log);
 
 //============buy shipment by carrier name/service type============
 // shipment.save().then(buyShipment => {

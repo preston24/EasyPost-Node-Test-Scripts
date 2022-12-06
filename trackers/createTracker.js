@@ -12,8 +12,8 @@ const trackArray = ['EZ1000000001', 'EZ4000000002', 'EZ7000000003', 'EZ700000000
 
 const tracker1 = new api.Tracker({
   // tracking_code: trackArray[0],
-  tracking_code: 'wdAddNo2oK5qGJxTT',
-  carrier: 'Veho'
+  tracking_code: '390270061206',
+  carrier: 'FedEx'
 });
 
 

@@ -4,8 +4,8 @@ require('dotenv').config();
 const Easypost = require('@easypost/api');
 // const apiKey = process.env.personalTestKey;
 
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey;
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey;
 const api = new Easypost(apiKey);
 
 
@@ -23,6 +23,7 @@ const toAddress = new api.Address({
   email: 'email@email.com',
 
 
+
   
   // name: 'Preston Bayle ',
   // street1: '820 E Newfield Dr',
@@ -37,30 +38,28 @@ const toAddress = new api.Address({
 });
 
 const fromAddress = new api.Address({
-  company: "StoreMcStoreFace",
-  name: 'John Smith',
-  street1: '358 S 700 E',
-  street2: 'STE B',
-  city: 'Salt Lake City',
-  state: 'UT',
-  zip: '84102',
-  country: 'US',
-  phone: '4165555556',
-  email: 'TEST123@YOPMAIL.COM',
+  // company: "StoreMcStoreFace",
+  // name: 'John Smith',
+  // street1: '358 S 700 E',
+  // street2: 'STE B',
+  // city: 'Salt Lake City',
+  // state: 'UT',
+  // zip: '84102',
+  // country: 'US',
+  // phone: '4165555556',
+  // email: 'TEST123@YOPMAIL.COM',
 
 
-
-  //  company: 'EasyPost',
-  //  name: 'Mr. EP',
-  //  street1: '345 California St',
-  //  street2: 'FL 10',
-  //  city: 'San Francisco',
-  //  state: 'CA',
-  //  zip: '94104',
-  //  country: 'US',
-  //  phone: '8012220000',
-  //  email: 'email@email.com',
-  //  carrier_facility: 'SFO'
+   company: 'EasyPost',
+   name: 'Mr. EP',
+   street1: '345 California St',
+   street2: 'FL 10',
+   city: 'San Francisco',
+   state: 'CA',
+   zip: '94104',
+   country: 'US',
+   phone: '8012220000',
+   email: 'email@email.com',
 });
 
 
@@ -99,7 +98,7 @@ const parcel = new api.Parcel({
   length: 10,
   width: 5,
   height: 8,
-  weight: 10,
+  weight: 40,
 });
 
 
@@ -113,7 +112,7 @@ const shipment = new api.Shipment({
   // return_address: returnAddress,
   parcel: parcel,
   // carrier: 'USPS',
-  // service: 'Priority',
+  // service: 'First',
   // reference: 'Testing',
   // is_return: true,
   // ancillary_endorsement: true,
@@ -127,7 +126,7 @@ const shipment = new api.Shipment({
       // carrier_insurance_amount: 10000
       // print_custom_1: 'TESTING!!!!!!',
       // print_custom_1_code: 'reference'
-      // label_format: 'ZPL',
+      // label_format: 'PDF',
       // label_size: '8.5X11_TOP_HALF_LABEL',
       // certified_mail: true,
       // return_receipt: true,
@@ -142,13 +141,13 @@ const shipment = new api.Shipment({
       // postage_label_inline: true
       // payment: { 
       //   type: 'THIRD_PARTY',
-      //   account: '123456',
+      //   account: 'X15A63',
       //   postal_code: '84094',
       //   country: 'US'
-      // }
+      // },
     },
-    carrier_accounts: [process.env.USPS],
-    // carrier_accounts: ['ca_33cf7ac0298f45f89734f65d9691d114']
+    // carrier_accounts: [process.env.USPS],
+    carrier_accounts: ['ca_0ba8c4bf8cc848abba362fb7c327ebc0']
 });
 
 
@@ -198,14 +197,14 @@ shipment.save().then(s => {
 
 
 // ============Buy Shipment by ID============
-// api.Shipment.retrieve('shp_f2506c1ae01e4216a7341c24be29d0a3').then(s => {
-//   s.buy('rate_699e531c47c1474dad67861c66733b55').then(console.log).catch(console.log);
+// api.Shipment.retrieve('shp_9a9719bbacd14cd8902fe85c93a653b2').then(s => {
+//   s.buy('rate_ebf6f55956b9454f8e138dbe7baea00d').then(console.log).catch(console.log);
 // }).catch(console.log);
 
 
 
 //============buy shipment by carrier name/service type============
 // shipment.save().then(buyShipment => {
-//   shipment.buy('USPS', 'First')
+//   shipment.buy('USPSReturns', 'PriorityMailReturn')
 //     .then(console.log).catch(console.log);
 // }).catch(console.log);

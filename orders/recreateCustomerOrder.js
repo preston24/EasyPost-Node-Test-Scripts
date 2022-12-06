@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey;
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey;
 
 // const apiKey = process.env.personalTestKey;
 
@@ -16,7 +16,7 @@ const data = (
   // ENTER JSON DATA BELOW
   //===============================================================//
 
-{}
+  {}
 
   //===============================================================//
 );
@@ -71,9 +71,33 @@ for (let i = 0; i < data.shipments.length; i++) {
       delete data.shipments[i].customs_info.customs_items[ii].created_at
       delete data.shipments[i].customs_info.customs_items[ii].updated_at
       delete data.shipments[i].customs_info.customs_items[ii].currency
+
+      if (data.shipments[i].customs_info) {
+        delete data.shipments[i].customs_info.id
+        delete data.shipments[i].customs_info.mode
+        delete data.shipments[i].customs_info.created_at
+        delete data.shipments[i].customs_info.updated_at
+        for (let ii = 0; ii < data.shipments[i].customs_info.customs_items.length; ii++) {
+          delete data.shipments[i].customs_info.customs_items[ii].id
+          delete data.shipments[i].customs_info.customs_items[ii].mode
+          delete data.shipments[i].customs_info.customs_items[ii].created_at
+          delete data.shipments[i].customs_info.customs_items[ii].updated_at
+          delete data.shipments[i].customs_info.customs_items[ii].currency
+        }
+
+        // Convert customs_items values from strings to numbers to get around prop type differences
+       // This is required for the EasyPost Node lib v5+
+        if (data.shipments[i].customs_info.customs_items[ii].value) {
+          data.shipments[i].customs_info.customs_items[ii].value = Number(
+            data.shipments[i].customs_info.customs_items[ii].value
+          );
+        }
+      }
+    }
     }
   }
-}
+
+
 
 // data.to_address.federal_tax_id = 'IE123456789000'
 // data.from_address.federal_tax_id = 'GB123456789000'
@@ -84,7 +108,7 @@ const order = new api.Order({
   from_address: data.from_address,
   shipments: data.shipments,
   options: data.options,
-  carrier_accounts: [{ id: process.env.UPS}],
+  carrier_accounts: [{ id: process.env.FEDEX}],
   // carrier_accounts: [ {"id":"ca_2e6e73b519ec487688e7cd20fbb9351e"}]
 });
 

@@ -4,20 +4,23 @@ require('dotenv').config();
 const Easypost = require('@easypost/api');
 const apiKey = process.env.testKey;
 // const apiKey = process.env.prodKey;
+
+// const apiKey = process.env.personalTestKey
 const api = new Easypost(apiKey);
 
 
 
   const toAddress = new api.Address({
-  // company: 'THE TEST MCTESTFACE CO.',
-  // name: 'MR. TEST MCTESTFACE',
-  // street1: '721 Government St',
-  // // street2: '',
-  // city: 'Victoria',
-  // state: 'BC',
-  // zip: 'V8W 1W5',
-  // country: 'CA',
-  // phone: '6135699941',
+  company: 'THE TEST MCTESTFACE CO.',
+  name: 'MR. TEST MCTESTFACE',
+  street1: '721 Government St',
+  // street2: '',
+  city: 'Victoria',
+  state: 'BC',
+  zip: 'V8W 1W5',
+  country: 'CA',
+  phone: '6135699941',
+  
  
 
   // company: 'McDonalds',
@@ -30,14 +33,14 @@ const api = new Easypost(apiKey);
   // email: 'email@email.com'
 
 
-  company: 'McDonalds',
-  street1: '357 Av. de la Constitución',
-  city: 'San Juan',
-  state: 'PR',
-  zip: '00918',
-  country: 'PR',
-  phone: '+61292641661',
-  email: 'email@email.com'
+  // company: 'McDonalds',
+  // street1: '357 Av. de la Constitución',
+  // city: 'San Juan',
+  // state: 'PR',
+  // zip: '00918',
+  // country: 'PR',
+  // phone: '+61292641661',
+  // email: 'email@email.com'
   
   // name: 'Monica Gustafson',
   // street1: 'Unit 8000 Box 5091',
@@ -60,6 +63,7 @@ const fromAddress = new api.Address({
   country: 'US',
   phone: '4165555556',
   email: 'TEST123@YOPMAIL.COM',
+  // carrier_facility: 'SLC'
 
   // company: 'EasyPost',
   // name: 'Mr. EP',
@@ -84,14 +88,14 @@ const fromAddress = new api.Address({
   // phone: '6135699941',
   // residential: false
 
-  company: 'McDonalds',
-  street1: ' 600 George St',
-  city: 'Sydney',
-  state: 'NSW',
-  zip: '2000',
-  country: 'AU',
-  phone: '+61292641661',
-  email: 'email@email.com'
+  // company: 'McDonalds',
+  // street1: ' 600 George St',
+  // city: 'Sydney',
+  // state: 'NSW',
+  // zip: '2000',
+  // country: 'AU',
+  // phone: '+61292641661',
+  // email: 'email@email.com'
 });
 
 
@@ -114,11 +118,11 @@ const customsInfo = new api.CustomsInfo({
             description: 'Sample good',
             quantity: 1,
             weight: 9,
-            value: 25,
+            value: 2600,
             // hs_tariff_number: '4901.99',
             origin_country: 'US',
             // code: 'MPH0213',
-            currency: 'USD'
+            // currency: 'USD'
         }),
 
       new api.CustomsItem({
@@ -143,10 +147,10 @@ const customsInfo = new api.CustomsInfo({
 
 const parcel = new api.Parcel({
     // predefined_package: 'Satchel',
-    length: 14,
-    width: 7,
-    height: 10,
-    weight: 32.0,
+    length: 1,
+    width: 1,
+    height: 1,
+    weight: 1.0,
 });
 
 // parcel.save().then(console.log).catch(console.log);
@@ -156,17 +160,17 @@ const shipment = new api.Shipment({
     from_address: fromAddress,
     parcel: parcel,
     customs_info: customsInfo,
-    // tax_identifiers: [
-    //   {
-    //     entity: "SENDER",
-    //     tax_id: "IM2760000742",
-    //     tax_id_type: "IOSS",
-    //     issuing_country: "US"
-    //   },
-    // ],
-    // reference: 'Testing UPS MI Label Sizes',
+    tax_identifiers: [
+      {
+        entity: "SENDER",
+        tax_id: "IM2760000742",
+        tax_id_type: "IOSS",
+        issuing_country: "US"
+      },
+    ],
+    // reference: 'Testing UPS MI',
     // is_return: true,
-    // service: 'ExpressWorldwideNonDoc',
+    // service: 'EconomyMailInnovations',
     options: {
     //  importer_address_id: 'adr_5919faf95aec43d4949215d07f913e16',
     //  bill_third_party_account: '12345',
@@ -178,7 +182,7 @@ const shipment = new api.Shipment({
     //  freight_charge: 56.72,
     //  label_size: '4X6',
     //  label_format: "PNG",
-    carrier_insurance_amount: "550"
+    // carrier_insurance_amount: "550"
     //  delivery_confirmation: 'SIGNATURE',
     // suppress_etd: true
     //  hold_for_pickup: true,
@@ -201,18 +205,18 @@ const shipment = new api.Shipment({
     //    country: 'US'
     //  },
     },
-    // carrier_accounts: ['ca_c94828304bdd4a4789268954764e485d'],
-    carrier_accounts: [process.env.DHLEXPRESS],
+    // carrier_accounts: ['ca_abb5a58ad235459fa6dc04056f88ed7d'],
+    carrier_accounts: [process.env.UPS],
 });
 
 //SOME VARIOUS WAYS TO RETURN RESPONSE BODY INFO I'VE PLAYED AROUND WITH
 
-// shipment.save().then(s => {
-//   console.log(s.rates)
-//   console.log(s.messages)
-//   console.log(s.id);
-//   // console.log(s.postage_label); // for one-call buys
-// }).catch(console.log);
+shipment.save().then(s => {
+  console.log(s.rates)
+  console.log(s.messages)
+  console.log(s.id);
+  // console.log(s.postage_label); // for one-call buys
+}).catch(console.log);
 
 
 // shipment.save().then(s => {
@@ -252,6 +256,6 @@ const shipment = new api.Shipment({
 
 
 // ============buy shipment by lowest rate============
-shipment.save().then(s => {
-  s.buy(s.lowestRate()).then(console.log).catch(console.log);
- });
+// shipment.save().then(s => {
+//   s.buy(s.lowestRate()).then(console.log).catch(console.log);
+//  });

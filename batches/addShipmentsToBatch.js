@@ -7,7 +7,6 @@ const apiKey = process.env.testKey;
 const api = new Easypost(apiKey);
 
 
-const batch = api.Batch.retrieve('batch_');
-
-
-batch.addShipments(['shp_344855ffa97848f3879db46aeef27904']).then(console.log);
+api.Batch.retrieve('batch_2121fc8b578f4a04a6486f15256dd791').then((b) =>
+  b.addShipments(['shp_71533a58338940c3a738d0578dd9ff97', 'shp_ec0340d0b58a4718bd307495bd89db53', 'shp_ed32565a6f0243e7b3d0af132e3e084e', 'shp_ed32565a6f0243e7b3d0af132e3e084e']).then(console.log),
+);

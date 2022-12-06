@@ -8,11 +8,11 @@ const api = new Easypost(apiKey);
 
 ///////////////////////////ADD SHIPMENTS TO A BATCH////////////////////////////////////////////////////////////////
 
-// batch = new api.Batch({
-//     shipments: ['shp_cad669e927814fb7b1abcab16d4dc386'],
-// });
+batch = new api.Batch({
+    shipments: ['shp_ab4740b51cdd4b1db7aa75a17539629f', 'shp_0fb36eba90d341968244b84b8cd86faf', 'shp_ae8fedf445b84ee7b2a4a843cdc11541'],
+});
 
-// batch.save().then(console.log).catch(console.log);
+batch.save().then(console.log).catch(console.log);
 
 ////////////////////ADD SHIPMENTS TO BATCH USING AN ARRAY OF OBJECTS/////////////////////////////////////////////////
 
@@ -25,6 +25,6 @@ const api = new Easypost(apiKey);
 
 ///////////////////RETRIEVE A BATCH AND SCANFORM/////////////////////////////////////////////////////////////////////////////////
 
-api.Batch.retrieve('batch_d40a6e5e2a3f457494fbca09e2d67be4').then(b => {
-     b.createScanForm().then(console.log);
-   });
+// api.Batch.retrieve('batch_d40a6e5e2a3f457494fbca09e2d67be4').then(b => {
+//      b.createScanForm().then(console.log);
+//    });

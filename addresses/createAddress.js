@@ -2,8 +2,8 @@ require('dotenv').config();
 
 
 const Easypost = require('@easypost/api');
-const apiKey = process.env.testKey;
-// const apiKey = process.env.prodKey
+// const apiKey = process.env.testKey;
+const apiKey = process.env.prodKey
 const api = new Easypost(apiKey);
 
 
@@ -32,7 +32,7 @@ const fromAddress = new api.Address({
     state: 'UT',
     zip: '84102',
     country: 'US',
-    phone: '4165555556',
+    phone: 'abscskdjflksjoedkslakdsfjlskejdisl',
     email: 'TEST123@YOPMAIL.COM',
   });
 
